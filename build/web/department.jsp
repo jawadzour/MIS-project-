@@ -63,25 +63,25 @@
                                 </div>
                                 <form id="departmentForm" method="POST">
                                     <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="inputFaculty">Faculty Name</label>
-                                        <select name="facultyId" class="form-control custom-select" id="inputFaculty">
-                                            
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputDepartment">Department Name</label>
-                                        <input name="departmentName" type="text" id="inputDepartment" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <input id="submitBtn" type="submit" value="Add New Department" class="btn btn-success float-right" >
-                                    </div>
+                                        <div class="form-group">
+                                            <label for="inputFaculty">Faculty Name</label>
+                                            <select name="facultyId" class="form-control custom-select" id="inputFaculty">
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDepartment">Department Name</label>
+                                            <input name="departmentName" type="text" id="inputDepartment" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input id="submitBtn" type="submit" value="Add New Department" class="btn btn-success float-right" >
+                                        </div>
 
 
-                                </div>
-                                <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card-body -->
                                 </form>
-                                
+
                             </div>
                             <!-- /.card -->
                             <div class="card">
