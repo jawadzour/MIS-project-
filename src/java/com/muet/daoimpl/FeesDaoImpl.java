@@ -36,8 +36,8 @@ public class FeesDaoImpl implements FeesDao{
             pst = con.prepareStatement("insert into fees (fees_title, amount, announcement_date, due_date) values (?, ?, ?, ?);");
             pst.setString(1, fees.getFeesTitle());
             pst.setInt(2, fees.getAmount());
-            pst.setTimestamp(3, fees.getAnnouncementDate());
-            pst.setTimestamp(4, fees.getDueDate());
+            pst.setString(3, fees.getAnnouncementDate());
+            pst.setString(4, fees.getDueDate());
             return pst.execute();
         } catch (SQLException ex) {
             Logger.getLogger(FeesDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -52,8 +52,8 @@ public class FeesDaoImpl implements FeesDao{
             pst = con.prepareStatement("update fees set fees_title = ?, amount = ?, announcement_date = ?, due_date = ? where fees_id = ?");
             pst.setString(1, fees.getFeesTitle());
             pst.setInt(2, fees.getAmount());
-            pst.setTimestamp(3, fees.getAnnouncementDate());
-            pst.setTimestamp(4, fees.getDueDate());
+            pst.setString(3, fees.getAnnouncementDate());
+            pst.setString(4, fees.getDueDate());
             pst.setInt(5, fees.getFeesId());
             return pst.execute();
         } catch (SQLException ex) {
@@ -86,8 +86,8 @@ public class FeesDaoImpl implements FeesDao{
                 fees.setFeesId(rst.getInt("fees_id"));
                 fees.setFeesTitle(rst.getString("fees_title"));
                 fees.setAmount(rst.getInt("amount"));
-                fees.setAnnouncementDate(rst.getTimestamp("announcement_date"));
-                fees.setDueDate(rst.getTimestamp("due_date"));
+                fees.setAnnouncementDate(rst.getString("announcement_date"));
+                fees.setDueDate(rst.getString("due_date"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(FeesDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -106,8 +106,8 @@ public class FeesDaoImpl implements FeesDao{
                 fees.setFeesId(rst.getInt("fees_id"));
                 fees.setFeesTitle(rst.getString("fees_title"));
                 fees.setAmount(rst.getInt("amount"));
-                fees.setAnnouncementDate(rst.getTimestamp("announcement_date"));
-                fees.setDueDate(rst.getTimestamp("due_date"));
+                fees.setAnnouncementDate(rst.getString("announcement_date"));
+                fees.setDueDate(rst.getString("due_date"));
                 feeses.add(fees);
             }
         } catch (SQLException ex) {
