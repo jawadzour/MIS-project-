@@ -142,13 +142,13 @@ insert  into `faculty`(`faculty_id`,`faculty_name`) values (1,'Faculty Of Scienc
 DROP TABLE IF EXISTS `fees`;
 
 CREATE TABLE `fees` (
-  `fees_id` int(11) NOT NULL,
+  `fees_id` int(11) NOT NULL AUTO_INCREMENT,
   `fees_title` varchar(255) DEFAULT NULL,
   `amount` int(11) DEFAULT NULL,
-  `announcement_date` timestamp NULL DEFAULT NULL,
-  `due_date` timestamp NULL DEFAULT NULL,
+  `announcement_date` varchar(255) DEFAULT NULL,
+  `due_date` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`fees_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `fees` */
 
