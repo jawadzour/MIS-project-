@@ -2,7 +2,7 @@
 SQLyog Ultimate v12.09 (64 bit)
 MySQL - 10.4.11-MariaDB : Database - mis
 *********************************************************************
-*/
+*/
 
 /*!40101 SET NAMES utf8 */;
 
