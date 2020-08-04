@@ -5,8 +5,6 @@
  */
 package com.muet.model;
 
-import java.sql.Timestamp;
-
 /**
  *
  * @author khatr
@@ -15,8 +13,8 @@ public class Fees {
     private Integer feesId;
     private String feesTitle;
     private Integer amount;
-    private Timestamp announcementDate;
-    private Timestamp dueDate;
+    private String announcementDate;
+    private String dueDate;
     
     public Fees() {}
 
@@ -44,19 +42,19 @@ public class Fees {
         this.amount = amount;
     }
 
-    public Timestamp getAnnouncementDate() {
+    public String getAnnouncementDate() {
         return announcementDate;
     }
 
-    public void setAnnouncementDate(Timestamp announcementDate) {
+    public void setAnnouncementDate(String announcementDate) {
         this.announcementDate = announcementDate;
     }
 
-    public Timestamp getDueDate() {
+    public String getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Timestamp dueDate) {
+    public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
     }
     
