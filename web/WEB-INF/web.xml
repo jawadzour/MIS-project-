@@ -15,6 +15,10 @@
         <servlet-name>FeesController</servlet-name>
         <servlet-class>com.muet.controller.FeesController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BatchController</servlet-name>
+        <servlet-class>com.muet.controller.BatchController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>FacultyController</servlet-name>
         <url-pattern>/FacultyController</url-pattern>
@@ -26,6 +30,10 @@
     <servlet-mapping>
         <servlet-name>FeesController</servlet-name>
         <url-pattern>/FeesController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BatchController</servlet-name>
+        <url-pattern>/BatchController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

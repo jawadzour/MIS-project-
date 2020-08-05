@@ -52,6 +52,18 @@ CREATE TABLE `academic_information_graduate` (
 
 /*Data for the table `academic_information_graduate` */
 
+/*Table structure for table `batch` */
+
+DROP TABLE IF EXISTS `batch`;
+
+CREATE TABLE `batch` (
+  `batch_id` int(11) NOT NULL AUTO_INCREMENT,
+  `batch_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`batch_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+/*Data for the table `batch` */
+
 /*Table structure for table `department` */
 
 DROP TABLE IF EXISTS `department`;

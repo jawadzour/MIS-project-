@@ -58,7 +58,7 @@
           </li>
           
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="batch.jsp" class="nav-link">
               <i class="nav-icon fas fa-map-marker text-info"></i>
               <p>Batch</p>
             </a>
