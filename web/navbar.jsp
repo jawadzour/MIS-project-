@@ -78,7 +78,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="student.jsp" class="nav-link">
                         <i class="nav-icon fas fa-road text-info"></i>
                         <p>Students</p>
                     </a>

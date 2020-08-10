@@ -5,8 +5,6 @@
  */
 package com.muet.model;
 
-import java.util.Date;
-
 /**
  *
  * @author 92310
@@ -18,11 +16,11 @@ public class Student{
     private String fathersName;
     private String legalId;
     private String legalIdNo;
-    private int nationality;
+    private String  nationality;
     private String placeOfIssueOfLegalId;
-    private Date dateOfIssueOfLegalId;
+    private String  dateOfIssueOfLegalId;
     private String mobile;
-    private Date dob;
+    private String  dob;
     private String email;
     private String domicile;
     private String countryOfBirth;
@@ -30,7 +28,17 @@ public class Student{
     private String religion;
     private String address;
     private String currentAddress;
+    private int semester;
+    private int departmentId;
+    private int batchId;
+    private String  admissionDate;
+    private int supervisorId;
+    private String program;
+    private String fieldProgram;
+    private String shift;
+    private String timing;
 
+    
     public String getFathersName() {
         return fathersName;
     }
@@ -55,11 +63,11 @@ public class Student{
         this.legalIdNo = legalIdNo;
     }
 
-    public int getNationality() {
+    public String getNationality() {
         return nationality;
     }
 
-    public void setNationality(int nationality) {
+    public void setNationality(String nationality) {
         this.nationality = nationality;
     }
 
@@ -71,11 +79,11 @@ public class Student{
         this.placeOfIssueOfLegalId = placeOfIssueOfLegalId;
     }
 
-    public Date getDateOfIssueOfLegalId() {
+    public String  getDateOfIssueOfLegalId() {
         return dateOfIssueOfLegalId;
     }
 
-    public void setDateOfIssueOfLegalId(Date dateOfIssueOfLegalId) {
+    public void setDateOfIssueOfLegalId(String  dateOfIssueOfLegalId) {
         this.dateOfIssueOfLegalId = dateOfIssueOfLegalId;
     }
 
@@ -87,11 +95,11 @@ public class Student{
         this.mobile = mobile;
     }
 
-    public Date getDob() {
+    public String  getDob() {
         return dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(String  dob) {
         this.dob = dob;
     }
 
@@ -151,12 +159,12 @@ public class Student{
         this.currentAddress = currentAddress;
     }
 
-    public int getSemeter() {
-        return semeter;
+    public int getSemester() {
+        return semester;
     }
 
-    public void setSemeter(int semeter) {
-        this.semeter = semeter;
+    public void setSemester(int semester) {
+        this.semester = semester;
     }
 
     public int getDepartmentId() {
@@ -167,19 +175,19 @@ public class Student{
         this.departmentId = departmentId;
     }
 
-    public String getBatch() {
-        return batch;
+    public int getBatch() {
+        return batchId;
     }
 
-    public void setBatch(String batch) {
-        this.batch = batch;
+    public void setBatch(int batchId) {
+        this.batchId = batchId;
     }
 
-    public Date getAdmissionDate() {
+    public String getAdmissionDate() {
         return admissionDate;
     }
 
-    public void setAdmissionDate(Date admissionDate) {
+    public void setAdmissionDate(String  admissionDate) {
         this.admissionDate = admissionDate;
     }
 
@@ -222,15 +230,7 @@ public class Student{
     public void setTiming(String timing) {
         this.timing = timing;
     }
-    private int semeter ;
-    private int departmentId;
-    private String batch;
-    private Date admissionDate;
-    private int supervisorId;
-    private String program;
-    private String fieldProgram;
-    private String shift;
-    private String timing;
+    
     
     public int getStudentId() {
         return studentId;

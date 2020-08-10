@@ -29,7 +29,13 @@
         <div class="wrapper">
             <jsp:include page="navbar.jsp"/>
             <jsp:include page="top_navbar.jsp"/>
-            
+            <%
+                response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+                response.setHeader("pragma", "no-cache");
+                response.setHeader("Expires", "0");
+                // If Session Exists
+                if (session.getAttribute("user") != null) {
+            %>
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
@@ -43,7 +49,7 @@
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
                                     <li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
-                                    <li class="breadcrumb-item active">Department</li>
+                                    <li class="breadcrumb-item active">Student Profile</li>
                                 </ol>
                             </div>
                         </div>
@@ -222,70 +228,75 @@
                                                         <div class="row">
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
-                                                                    <label for="inputRollNumber">Semester</label>
-                                                                    <input type="email" class="form-control" id="inputRollNumber" placeholder="19ME-SW101">
+                                                                    <label for="inputSemester">Semester</label>
+                                                                    <input type="email" class="form-control" id="inputSemester" placeholder="19ME-SW101">
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
-                                                                    <label for="inputFullName">Deparment</label>
-                                                                    <input type="email" class="form-control" id="inputFullName" placeholder="Nand Lal">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-6">
-                                                                <div class="form-group">
-                                                                    <label for="inputRollNumber">Batch</label>
-                                                                    <input type="email" class="form-control" id="inputRollNumber" placeholder="19ME-SW101">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                                <div class="form-group">
-                                                                    <label for="inputFullName">Admission Date</label>
-                                                                    <input type="email" class="form-control" id="inputFullName" placeholder="Nand Lal">
+                                                                    <label for="inputDepartment">Deparment</label>
+                                                                    <input type="email" class="form-control" id="inputDepartment" placeholder="Nand Lal">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
-                                                                    <label for="inputRollNumber">Supervisor</label>
-                                                                    <input type="email" class="form-control" id="inputRollNumber" placeholder="19ME-SW101">
+                                                                    <label for="inputBatch">Batch</label>
+                                                                    <input type="email" class="form-control" id="inputBatch" placeholder="19ME-SW101">
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
-                                                                    <label for="inputFullName">Program</label>
-                                                                    <input type="email" class="form-control" id="inputFullName" placeholder="Nand Lal">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-6">
-                                                                <div class="form-group">
-                                                                    <label for="inputRollNumber">Field Program</label>
-                                                                    <input type="email" class="form-control" id="inputRollNumber" placeholder="19ME-SW101">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                                <div class="form-group">
-                                                                    <label for="inputFullName">Shift</label>
-                                                                    <input type="email" class="form-control" id="inputFullName" placeholder="Nand Lal">
+                                                                    <label for="inputAdmissionDate">Admission Date</label>
+                                                                    <input type="email" class="form-control" id="inputAdmissionDate" placeholder="Nand Lal">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
-                                                                    <label for="inputRollNumber">Timing</label>
-                                                                    <input type="email" class="form-control" id="inputRollNumber" placeholder="19ME-SW101">
+                                                                    <label for="inputSupervisor">Supervisor</label>
+                                                                    <input type="email" class="form-control" id="inputSupervisor" placeholder="19ME-SW101">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="inputProgram">Program</label>
+                                                                    <input type="email" class="form-control" id="inputProgram" placeholder="Nand Lal">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="inputFieldProgram">Field Program</label>
+                                                                    <input type="email" class="form-control" id="inputFieldProgram" placeholder="19ME-SW101">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="inputShift">Shift</label>
+                                                                    <input type="email" class="form-control" id="inputShift" placeholder="Nand Lal">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="inputTiming">Timing</label>
+                                                                    <input type="email" class="form-control" id="inputTiming" placeholder="19ME-SW101">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
 
                                                 </div>
+
+                                            </div>
+                                            <div class="card-header">
+
+
 
                                             </div>
                                             <!-- /.tab-pane -->
@@ -502,6 +513,9 @@
                                             </div>
                                             <!-- /.tab-pane -->
                                         </div>
+                                        <div class="form-group">
+                                            <input id="submitBtn1" type="submit" value="Update Student Record" class="btn btn-success float-left">
+                                        </div>
                                         <!-- /.tab-content -->
                                     </div><!-- /.card-body -->
                                 </div>
@@ -514,7 +528,14 @@
                 </section>
                 <!-- /.content -->
             </div>
+
             <!-- /.content-wrapper -->
+            <%
+                } else {
+                    // If Session Expires
+                    response.sendRedirect("admin-login.jsp");
+                }
+            %>
 
             <!-- Control Sidebar -->
             <aside class="control-sidebar control-sidebar-dark">
@@ -526,6 +547,6 @@
 
         <jsp:include page="bottom_links.jsp"/>
         <!-- page script -->
-        <script src="js/department.js"></script>
+        <script src="js/student_profile.js"></script>
     </body>
 </html>

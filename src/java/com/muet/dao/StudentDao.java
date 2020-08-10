@@ -36,18 +36,18 @@ public interface StudentDao {
      * @return 
      */
 
-    public Student getFacultyById(Integer id);
+    public List<Student> getStudentById(Integer id);
     
     /**
      *
      * @return List of Faculty
      */
-    public List<Student> getFaculties();
+    public List<Student> getStudents();
     /**
      *
      * @param studentName
      * @return 
      */
 
-    public Student getFacultyByFacultyName(String studentName);
+    public Student getStudentByStudentName(String studentName);
 }

@@ -29,6 +29,13 @@
         <div class="wrapper">
             <jsp:include page="navbar.jsp"/>
             <jsp:include page="top_navbar.jsp"/>
+            <%
+                response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+                response.setHeader("pragma", "no-cache");
+                response.setHeader("Expires", "0");
+                // If Session Exists
+                if (session.getAttribute("user") != null) {
+            %>
             
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
@@ -74,8 +81,6 @@
                                         <div class="form-group">
                                             <input id="submitBtn1" type="submit" value="Add New Student" class="btn btn-success float-right">
                                         </div>
-
-
                                     </div>
                                     <!-- /.card-body -->
                                 </form>
@@ -118,6 +123,12 @@
                 </section>
             </div>
             <!-- /.content-wrapper -->
+            <%
+                } else {
+                    // If Session Expires
+                    response.sendRedirect("admin-login.jsp");
+                }
+            %>
 
             <!-- Control Sidebar -->
             <aside class="control-sidebar control-sidebar-dark">
