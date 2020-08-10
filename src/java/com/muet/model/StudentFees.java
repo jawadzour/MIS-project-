@@ -15,7 +15,7 @@ public class StudentFees {
     private Integer studentFeesId;
     private Student student;
     private Fees fees;
-    private Date datePaid;
+    private String datePaid;
     private Integer amountPaid;
     private Integer lateFees;
     private Integer challanNumber;
@@ -46,11 +46,11 @@ public class StudentFees {
         this.fees = fees;
     }
 
-    public Date getDatePaid() {
+    public String getDatePaid() {
         return datePaid;
     }
 
-    public void setDatePaid(Date datePaid) {
+    public void setDatePaid(String datePaid) {
         this.datePaid = datePaid;
     }
 

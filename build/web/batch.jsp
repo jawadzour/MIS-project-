@@ -29,7 +29,12 @@
         <div class="wrapper">
             <jsp:include page="navbar.jsp"/>
             <jsp:include page="top_navbar.jsp"/>
-
+            <%
+                response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+                response.setHeader("pragma", "no-cache");
+                response.setHeader("Expires", "0");
+                if (session.getAttribute("user") != null) {
+            %>
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
@@ -112,6 +117,13 @@
                 </section>
             </div>
             <!-- /.content-wrapper -->
+            <%
+                } else {
+                    // If Session Expires
+
+                    response.sendRedirect("admin-login.jsp");
+                }
+            %>
 
             <!-- Control Sidebar -->
             <aside class="control-sidebar control-sidebar-dark">

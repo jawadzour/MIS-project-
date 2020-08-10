@@ -9,7 +9,8 @@ function saveFees() {
     var amount = $("#inputAmount").val();
     var announcementDate = $("#inputAnnouncementDate").val();
     var dueDate = $("#inputDueDate").val();
-    $.ajax({
+    if(amount !== null) {
+        $.ajax({
         type: "POST",
         url: "FeesController",
         data: {
@@ -20,7 +21,6 @@ function saveFees() {
             dueDate: dueDate
         },
         success: function (data, textStatus, jqXHR) {
-            resetFields();
             showData();
             $("html").animate({scrollTop: $(document).height()}, 1000);
             alert("Data Added Successfully!");
@@ -29,8 +29,7 @@ function saveFees() {
             alert("Error");
         }
     });
-
-    //}
+    }
 
 }
 function showData() {
@@ -102,7 +101,6 @@ function updateData() {
             feesId: id
         },
         success: function (data, textStatus, jqXHR) {
-            resetFields();
             showData();
             $("html").animate({scrollTop: $(document).height()}, 1000);
             alert("Data Updated Successfully!");
@@ -122,7 +120,6 @@ function deleteData(id) {
             feesId: feesId
         },
         success: function (data, textStatus, jqXHR) {
-            resetFields();
             showData();
             location.reload();
             $("html").animate({scrollTop: $(document).height()}, 1000);
@@ -133,40 +130,16 @@ function deleteData(id) {
         }
     });
 }
-function populateFaculties() {
-    $.ajax({
-        url: "FacultyController",
-        method: "POST",
-        async: false,
-        data: {
-            action: "view"
-        },
-        success: function (data) {
-            var data = JSON.parse(data);
-            var html = "<option value='' selected disabled>Select Faculty</option>";
-            for (var i = 0; i < data.length; i++) {
-                html += "<option value='" + data[i].facultyId + "'>" + data[i].facultyName + "</option>";
-            }
-            $("#inputFaculty").html(html);
-        }
-    });
-}
-function resetFields() {
-    $("#inputDepartment").val('');
-    $("#inputFaculty").val('1');
-    showData();
-    populateFaculties();
-}
+
 $(document).ready(function () {
     showData();
-    populateFaculties();
     $(function () {
         $("#example1").DataTable({
             "responsive": true,
             "autoWidth": false
         });
     });
-    $("#departmentForm").validate({
+    $("#feesForm").validate({
         rules: {
             feesTitle: {
                 required: true
@@ -214,7 +187,6 @@ $("#submitBtn").on("click", function () {
         if ($("#submitBtn").val() === "Add New Fees") {
             saveFees();
         } else if ($("#submitBtn").val() === "Update Fees") {
-            alert("updateCalled");
             updateData();
         }
     }

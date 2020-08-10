@@ -4,6 +4,7 @@
     Author     : khatr
 --%>
 
+<%@page import="com.muet.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -30,6 +31,13 @@
             <jsp:include page="navbar.jsp"/>
             <jsp:include page="top_navbar.jsp"/>
 
+            <%
+                response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+                response.setHeader("pragma", "no-cache");
+                response.setHeader("Expires", "0");
+                // Checking Session
+                if (session.getAttribute("user") != null) {
+            %>
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
@@ -63,31 +71,31 @@
                                 </div>
                                 <form id="feesForm" method="POST">
                                     <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="inputFeesTitle">Fees Title</label>
-                                        <input name="feesTitle" type="text" id="inputFeesTitle" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputAmount">Amount</label>
-                                        <input name="amount" type="number" id="inputAmount" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputAnnouncementDate">Announcement Date</label>
-                                        <input name="announcementDate" type="datetime-local" id="inputAnnouncementDate" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputDueDate">Due Date</label>
-                                        <input name="dueDate" type="datetime-local" id="inputDueDate" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <input id="submitBtn" type="submit" value="Add New Fees" class="btn btn-success float-right" >
-                                    </div>
+                                        <div class="form-group">
+                                            <label for="inputFeesTitle">Fees Title</label>
+                                            <input name="feesTitle" type="text" id="inputFeesTitle" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputAmount">Amount</label>
+                                            <input name="amount" type="number" id="inputAmount" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputAnnouncementDate">Announcement Date</label>
+                                            <input name="announcementDate" type="datetime-local" id="inputAnnouncementDate" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDueDate">Due Date</label>
+                                            <input name="dueDate" type="datetime-local" id="inputDueDate" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input id="submitBtn" type="submit" value="Add New Fees" class="btn btn-success float-right" >
+                                        </div>
 
 
-                                </div>
-                                <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card-body -->
                                 </form>
-                                
+
                             </div>
                             <!-- /.card -->
                             <div class="card">
@@ -130,6 +138,14 @@
                 </section>
             </div>
             <!-- /.content-wrapper -->
+            <%
+                } else {
+                    // If session expires
+                    response.sendRedirect("admin-login.jsp");
+                }
+            %>
+
+
 
             <!-- Control Sidebar -->
             <aside class="control-sidebar control-sidebar-dark">

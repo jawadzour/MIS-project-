@@ -29,6 +29,7 @@
         <div class="wrapper">
             <jsp:include page="navbar.jsp"/>
             <jsp:include page="top_navbar.jsp"/>
+            
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">

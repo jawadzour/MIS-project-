@@ -1,6 +1,6 @@
 <%-- 
-    Document   : batch
-    Created on : Aug 5, 2020, 11:32:45 PM
+    Document   : student_fees
+    Created on : Aug 6, 2020, 11:01:55 PM
     Author     : khatr
 --%>
 
@@ -33,6 +33,7 @@
                 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
                 response.setHeader("pragma", "no-cache");
                 response.setHeader("Expires", "0");
+                //If Session Exists
                 if (session.getAttribute("user") != null) {
             %>
             <!-- Content Wrapper. Contains page content -->
@@ -42,12 +43,12 @@
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1>Manage Faculties</h1>
+                                <h1>Manage Fees Details</h1>
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
                                     <li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
-                                    <li class="breadcrumb-item active">Batch</li>
+                                    <li class="breadcrumb-item active">Fees Details</li>
                                 </ol>
                             </div>
                         </div>
@@ -59,21 +60,41 @@
                         <div class="col-md-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Add Batch</h3>
+                                    <h3 class="card-title">Add Fees Details</h3>
 
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                                             <i class="fas fa-minus"></i></button>
                                     </div>
                                 </div>
-                                <form id="batchForm" method="POST">
+                                <form id="studentFeesForm" method="POST">
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="inputBatch">Batch Name</label>
-                                            <input name="batchName" type="text" id="inputBatch" class="form-control">
+                                            <label for="inputStudentId">Student ID</label>
+                                            <input name="studentId" type="text" id="inputStudentId" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <input id="submitBtn" type="submit" value="Add New Batch" class="btn btn-success float-right">
+                                            <label for="inputFeesId">Fees ID</label>
+                                            <input name="feesId" type="number" id="inputFeesId" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDatePaid">Date Paid</label>
+                                            <input name="datePaid" type="date" id="inputDatePaid" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputAmountPaid">Amount Paid</label>
+                                            <input name="amountPaid" type="number" id="inputAmountPaid" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputLateFee">Late Fee</label>
+                                            <input name="lateFee" type="number" id="inputLateFee" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputChallanNumber">Challan Number</label>
+                                            <input name="challanNumber" type="number" id="inputChallanNumber" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input id="submitBtn" type="submit" value="Add New Fee Detail" class="btn btn-success float-right" >
                                         </div>
 
 
@@ -85,14 +106,19 @@
                             <!-- /.card -->
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Batches</h3>
+                                    <h3 class="card-title">Fees Details</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Batch Name</th>
+                                                <th>Student ID</th>
+                                                <th>Fees ID</th>
+                                                <th>Date Paidt</th>
+                                                <th>Amount Paid</th>
+                                                <th>Late Fee</th>
+                                                <th>Challan Number</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -101,7 +127,12 @@
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>Batch Name</th>
+                                                <th>Student ID</th>
+                                                <th>Fees ID</th>
+                                                <th>Date Paidt</th>
+                                                <th>Amount Paid</th>
+                                                <th>Late Fee</th>
+                                                <th>Challan Number</th>
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>
@@ -120,10 +151,10 @@
             <%
                 } else {
                     // If Session Expires
-
                     response.sendRedirect("admin-login.jsp");
                 }
             %>
+
 
             <!-- Control Sidebar -->
             <aside class="control-sidebar control-sidebar-dark">
@@ -135,6 +166,6 @@
 
         <jsp:include page="bottom_links.jsp"/>
         <!-- page script -->
-        <script src="js/batch.js"></script>
+        <script src="js/feesDetails.js"></script>
     </body>
 </html>

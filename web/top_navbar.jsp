@@ -4,6 +4,7 @@
     Author     : khatr
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!-- Navbar -->
@@ -35,8 +36,14 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+        <li>
+            <form action="HomeController" method="post">
+                <input type="submit" class="btn btn-primary" value="Logout"/>
+            </form>
+            
+        </li>
       <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
+<!--      <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
           <span class="badge badge-warning navbar-badge">15</span>
@@ -61,7 +68,7 @@
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
-      </li>
+      </li>-->
       <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
           <i class="fas fa-th-large"></i>

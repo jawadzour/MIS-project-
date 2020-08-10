@@ -7,7 +7,7 @@ var departmentId;
 function saveDepartment() {
         var departmentName = $("#inputDepartment").val();
         var facultyId = $("#inputFaculty").val();
-        if(departmentName !== null) {
+        //if(departmentName !== null) {
             $.ajax({
             type: "POST",
             url: "DepartmentController",
@@ -26,7 +26,7 @@ function saveDepartment() {
                 alert("Error");
             }
         });
-        }
+        //}
         
     //}
 
