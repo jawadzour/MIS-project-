@@ -6,6 +6,7 @@
 package com.muet.dao;
 
 import com.muet.model.User;
+import java.util.List;
 
 /**
  *
@@ -13,4 +14,41 @@ import com.muet.model.User;
  */
 public interface UserDao {
     public User login(String email, String password);
+    
+    /**
+     *
+     * @param user
+     * @return 
+     */
+    
+    public Boolean addUser(User user);
+    
+    /**
+     *
+     * @param user
+     * @return 
+     */
+    
+    public Boolean updateUser(User user);
+    
+    /**
+     * @param id
+     * @return 
+     */
+    
+    public Boolean deleteUser(Integer id);
+
+    /**
+     *
+     * @param id
+     * @return 
+     */
+
+    public User getUserById(Integer id);
+    
+    /**
+     *
+     * @return List of Faculty
+     */
+    public List<User> getUsers();
 }

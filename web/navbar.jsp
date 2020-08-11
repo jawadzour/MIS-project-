@@ -100,7 +100,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="user.jsp" class="nav-link">
                         <i class="nav-icon fas fa-users text-info"></i>
                         <p>Users</p>
                     </a>

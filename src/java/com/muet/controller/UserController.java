@@ -5,10 +5,13 @@
  */
 package com.muet.controller;
 
+import com.google.gson.Gson;
 import com.muet.dao.UserDao;
 import com.muet.daoimpl.UserDaoImpl;
 import com.muet.model.User;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,8 +38,31 @@ public class UserController extends HttpServlet {
         response.setHeader("pragma", "no-cache");
         response.setHeader("Expires", "0");
         String action = request.getParameter("action");
-        if (action.equals("login")) {
-            login(request, response);
+        if (null == action) {
+            viewData(request, response);
+        } else {
+            switch (action) {
+                case "":
+                case "view":
+                    viewData(request, response);
+                    break;
+                case "add":
+                    addData(request, response);
+                    break;
+                case "getUserRecord":
+                    getUserRecord(request, response);
+                    break;
+                case "update":
+                    updateData(request, response);
+                    break;
+                case "delete":
+                    deleteData(request, response);
+                    break;
+                case "login":
+                    login(request, response);
+                default:
+                    break;
+            }
         }
 
     }
@@ -95,5 +121,46 @@ public class UserController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private void viewData(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        UserDao userDao = new UserDaoImpl();
+        List<User> users = userDao.getUsers();
+        PrintWriter pw = response.getWriter();
+        Gson gson = new Gson();
+        pw.write(gson.toJson(users));
+    }
+
+    private void addData(HttpServletRequest request, HttpServletResponse response) {
+        User user = new User();
+        user.setFullName(request.getParameter("fullName"));
+        user.setEmail(request.getParameter("email"));
+        user.setPassword(request.getParameter("password"));
+        UserDao userDao = new UserDaoImpl();
+        userDao.addUser(user);
+    }
+
+    private void getUserRecord(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        UserDao userDao = new UserDaoImpl();
+        User user = userDao.getUserById(Integer.parseInt(request.getParameter("userId")));
+        Gson gson = new Gson();
+        PrintWriter pw = response.getWriter();
+        pw.write(gson.toJson(user));
+    }
+
+    private void updateData(HttpServletRequest request, HttpServletResponse response) {
+        User user = new User();
+        user.setFullName(request.getParameter("fullName"));
+        user.setEmail(request.getParameter("email"));
+        user.setPassword(request.getParameter("password"));
+        user.setUserId(Integer.parseInt(request.getParameter("userId")));
+        UserDao userDao = new UserDaoImpl();
+        userDao.updateUser(user);
+    }
+
+    private void deleteData(HttpServletRequest request, HttpServletResponse response) {
+        UserDao userDao = new UserDaoImpl();
+        Integer id = Integer.parseInt(request.getParameter("userId"));
+        userDao.deleteUser(id);
+    }
 
 }

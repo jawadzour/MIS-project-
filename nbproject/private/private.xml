@@ -3,49 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/controller/FeesController.java</file>
-            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/dao/BatchDao.java</file>
-            <file>file:/D:/MISProject/MIS-project-/web/js/faculty.js</file>
-            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/daoimpl/StudentDaoImpl.java</file>
-            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/dao/FacultyDao.java</file>
-            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/controller/FeesDetailsController.java</file>
-            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/controller/BatchController.java</file>
-            <file>file:/D:/MISProject/MIS-project-/web/batch.jsp</file>
-            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/model/User.java</file>
-            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/model/Faculty.java</file>
-            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/dao/FeesDao.java</file>
-            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/dao/StudentFeesDao.java</file>
-            <file>file:/D:/MISProject/MIS-project-/web/js/feesDetails.js</file>
-            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/controller/HomeController.java</file>
-            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/daoimpl/FeesDaoImpl.java</file>
-            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/model/Batch.java</file>
-            <file>file:/D:/MISProject/MIS-project-/web/fees.jsp</file>
-            <file>file:/D:/MISProject/MIS-project-/web/js/fees.js</file>
-            <file>file:/D:/MISProject/MIS-project-/web/department.jsp</file>
-            <file>file:/D:/MISProject/MIS-project-/web/navbar.jsp</file>
-            <file>file:/D:/MISProject/MIS-project-/web/faculty.jsp</file>
-            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/daoimpl/StudentFeesDaoImpl.java</file>
-            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/daoimpl/DepartmentDaoImpl.java</file>
-            <file>file:/D:/MISProject/MIS-project-/web/admin-login.jsp</file>
             <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/daoimpl/UserDaoImpl.java</file>
             <file>file:/D:/MISProject/MIS-project-/web/student_profile.jsp</file>
-            <file>file:/D:/MISProject/MIS-project-/web/fees_details.jsp</file>
-            <file>file:/D:/MISProject/MIS-project-/web/WEB-INF/web.xml</file>
-            <file>file:/D:/MISProject/MIS-project-/web/js/user.js</file>
-            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/daoimpl/FacultyDaoImpl.java</file>
-            <file>file:/D:/MISProject/MIS-project-/web/top_navbar.jsp</file>
-            <file>file:/D:/MISProject/MIS-project-/web/bottom_links.jsp</file>
+            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/dao/StudentDao.java</file>
+            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/daoimpl/StudentDaoImpl.java</file>
+            <file>file:/D:/MISProject/MIS-project-/web/js/student.js</file>
+            <file>file:/D:/MISProject/MIS-project-/web/js/student_profile.js</file>
+            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/model/User.java</file>
             <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/dao/UserDao.java</file>
+            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/dao/FeesDao.java</file>
             <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/model/StudentFees.java</file>
             <file>file:/D:/MISProject/MIS-project-/web/student.jsp</file>
-            <file>file:/D:/MISProject/MIS-project-/web/js/batch.js</file>
             <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/controller/StudentController.java</file>
-            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/controller/FacultyController.java</file>
+            <file>file:/D:/MISProject/MIS-project-/web/navbar.jsp</file>
             <file>file:/D:/MISProject/MIS-project-/web/index.jsp</file>
-            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/daoimpl/BatchDaoImpl.java</file>
             <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/model/Student.java</file>
-            <file>file:/D:/MISProject/MIS-project-/web/js/department.js</file>
-            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/controller/UserController.java</file>
         </group>
     </open-files>
 </project-private>
