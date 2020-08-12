@@ -5,19 +5,25 @@
         <group>
             <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/daoimpl/UserDaoImpl.java</file>
             <file>file:/D:/MISProject/MIS-project-/web/student_profile.jsp</file>
+            <file>file:/D:/MISProject/MIS-project-/web/js/faculty.js</file>
             <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/dao/StudentDao.java</file>
             <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/daoimpl/StudentDaoImpl.java</file>
             <file>file:/D:/MISProject/MIS-project-/web/js/student.js</file>
+            <file>file:/D:/MISProject/MIS-project-/web/js/user.js</file>
             <file>file:/D:/MISProject/MIS-project-/web/js/student_profile.js</file>
             <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/model/User.java</file>
             <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/dao/UserDao.java</file>
             <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/dao/FeesDao.java</file>
             <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/model/StudentFees.java</file>
+            <file>file:/D:/MISProject/MIS-project-/web/user.jsp</file>
             <file>file:/D:/MISProject/MIS-project-/web/student.jsp</file>
             <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/controller/StudentController.java</file>
+            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/controller/FacultyController.java</file>
             <file>file:/D:/MISProject/MIS-project-/web/navbar.jsp</file>
             <file>file:/D:/MISProject/MIS-project-/web/index.jsp</file>
+            <file>file:/D:/MISProject/MIS-project-/web/faculty.jsp</file>
             <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/model/Student.java</file>
+            <file>file:/D:/MISProject/MIS-project-/src/java/com/muet/controller/UserController.java</file>
         </group>
     </open-files>
 </project-private>

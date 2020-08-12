@@ -186,8 +186,8 @@ CREATE TABLE `seminar_group` (
   `seminar_group_id` int(11) NOT NULL,
   `seminar_id` int(11) DEFAULT NULL,
   `thesis_group_id` int(11) DEFAULT NULL,
-  `date_applied` date DEFAULT NULL,
-  `date_conducted` date DEFAULT NULL,
+  `date_applied` varchar(255) DEFAULT NULL,
+  `date_conducted` varchar(255) DEFAULT NULL,
   `remarks` varchar(255) DEFAULT NULL,
   `comments` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`seminar_group_id`),
@@ -241,11 +241,11 @@ CREATE TABLE `student` (
   KEY `department_id` (`department_id`),
   CONSTRAINT `student_ibfk_6` FOREIGN KEY (`supervisor_id`) REFERENCES `department_faculty` (`department_faculty_id`),
   CONSTRAINT `student_ibfk_7` FOREIGN KEY (`department_id`) REFERENCES `department` (`department_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `student` */
 
-insert  into `student`(`student_id`,`roll_number`,`full_name`,`fathers_name`,`legal_id`,`legal_id_no`,`nationality`,`place_of_issue_of_legal_id`,`date_of_issue_of_legal_id`,`mobile`,`dob`,`email`,`domicile`,`country_of_birth`,`blood_group`,`religion`,`address`,`current_address`,`semester`,`department_id`,`batch`,`admission_date`,`supervisor_id`,`program`,`field_program`,`shift`,`timing`) values (1,'f15',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+insert  into `student`(`student_id`,`roll_number`,`full_name`,`fathers_name`,`legal_id`,`legal_id_no`,`nationality`,`place_of_issue_of_legal_id`,`date_of_issue_of_legal_id`,`mobile`,`dob`,`email`,`domicile`,`country_of_birth`,`blood_group`,`religion`,`address`,`current_address`,`semester`,`department_id`,`batch`,`admission_date`,`supervisor_id`,`program`,`field_program`,`shift`,`timing`) values (1,'f15',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,'F16SW49','Nand Lal',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `student_fees` */
 
@@ -292,9 +292,9 @@ CREATE TABLE `thesis_documents` (
 DROP TABLE IF EXISTS `thesis_group`;
 
 CREATE TABLE `thesis_group` (
-  `thesis_group_id` int(11) NOT NULL,
+  `thesis_group_id` int(11) NOT NULL AUTO_INCREMENT,
   `thesis_title` varchar(255) DEFAULT NULL,
-  `thesis_exam_date` date DEFAULT NULL,
+  `thesis_exam_date` varchar(255) DEFAULT NULL,
   `final_results` int(11) DEFAULT NULL,
   `remarks` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`thesis_group_id`)
@@ -311,10 +311,10 @@ CREATE TABLE `thesis_group_members` (
   `thesis_group_id` int(11) DEFAULT NULL,
   `student_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`thesis_group_members_id`),
-  KEY `thesis_group_id` (`thesis_group_id`),
   KEY `student_id` (`student_id`),
-  CONSTRAINT `thesis_group_members_ibfk_1` FOREIGN KEY (`thesis_group_id`) REFERENCES `thesis_group` (`thesis_group_id`),
-  CONSTRAINT `thesis_group_members_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`)
+  KEY `thesis_group_id` (`thesis_group_id`),
+  CONSTRAINT `thesis_group_members_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`),
+  CONSTRAINT `thesis_group_members_ibfk_3` FOREIGN KEY (`thesis_group_id`) REFERENCES `thesis_group` (`thesis_group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `thesis_group_members` */
@@ -329,11 +329,11 @@ CREATE TABLE `users` (
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `users` */
 
-insert  into `users`(`user_id`,`full_name`,`email`,`password`) values (1,'Nand Lal','nand@gmail.com','khatri');
+insert  into `users`(`user_id`,`full_name`,`email`,`password`) values (2,'Nand Lal','nkhatri558@gmail.com','123');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
