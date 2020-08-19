@@ -178,26 +178,26 @@ CREATE TABLE `seminar` (
 
 /*Data for the table `seminar` */
 
-/*Table structure for table `seminar_group` */
+/*Table structure for table `seminar_thesis` */
 
-DROP TABLE IF EXISTS `seminar_group`;
+DROP TABLE IF EXISTS `seminar_thesis`;
 
-CREATE TABLE `seminar_group` (
+CREATE TABLE `seminar_thesis` (
   `seminar_group_id` int(11) NOT NULL,
   `seminar_id` int(11) DEFAULT NULL,
-  `thesis_group_id` int(11) DEFAULT NULL,
+  `thesis_id` int(11) DEFAULT NULL,
   `date_applied` varchar(255) DEFAULT NULL,
   `date_conducted` varchar(255) DEFAULT NULL,
   `remarks` varchar(255) DEFAULT NULL,
   `comments` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`seminar_group_id`),
   KEY `seminar_id` (`seminar_id`),
-  KEY `thesis_group_id` (`thesis_group_id`),
-  CONSTRAINT `seminar_group_ibfk_1` FOREIGN KEY (`seminar_id`) REFERENCES `seminar` (`seminar_id`),
-  CONSTRAINT `seminar_group_ibfk_2` FOREIGN KEY (`thesis_group_id`) REFERENCES `thesis_group` (`thesis_group_id`)
+  KEY `thesis_id` (`thesis_id`),
+  CONSTRAINT `seminar_thesis_ibfk_1` FOREIGN KEY (`seminar_id`) REFERENCES `seminar` (`seminar_id`),
+  CONSTRAINT `seminar_thesis_ibfk_2` FOREIGN KEY (`thesis_id`) REFERENCES `thesis` (`thesis_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-/*Data for the table `seminar_group` */
+/*Data for the table `seminar_thesis` */
 
 /*Table structure for table `student` */
 
@@ -271,6 +271,22 @@ CREATE TABLE `student_fees` (
 
 insert  into `student_fees`(`student_fees_id`,`student_id`,`fees_id`,`date_paid`,`amount_paid`,`late_fees`,`challan_no`,`challan_image`) values (2,1,3,'2020-08-07',12,12,12,NULL);
 
+/*Table structure for table `thesis` */
+
+DROP TABLE IF EXISTS `thesis`;
+
+CREATE TABLE `thesis` (
+  `thesis_id` int(11) NOT NULL AUTO_INCREMENT,
+  `student_id` int(11) DEFAULT NULL,
+  `thesis_title` varchar(255) DEFAULT NULL,
+  `thesis_exam_date` varchar(255) DEFAULT NULL,
+  `final_results` int(11) DEFAULT NULL,
+  `remarks` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`thesis_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `thesis` */
+
 /*Table structure for table `thesis_documents` */
 
 DROP TABLE IF EXISTS `thesis_documents`;
@@ -278,46 +294,14 @@ DROP TABLE IF EXISTS `thesis_documents`;
 CREATE TABLE `thesis_documents` (
   `thesis_document_id` int(11) NOT NULL AUTO_INCREMENT,
   `thesis_document_title` varchar(255) DEFAULT NULL,
-  `thesis_group_id` int(11) DEFAULT NULL,
+  `thesis_id` int(11) DEFAULT NULL,
   `thesis_document` blob DEFAULT NULL,
   PRIMARY KEY (`thesis_document_id`),
-  KEY `thesis_group_id` (`thesis_group_id`),
-  CONSTRAINT `thesis_documents_ibfk_1` FOREIGN KEY (`thesis_group_id`) REFERENCES `thesis_group` (`thesis_group_id`)
+  KEY `thesis_id` (`thesis_id`),
+  CONSTRAINT `thesis_documents_ibfk_1` FOREIGN KEY (`thesis_id`) REFERENCES `thesis` (`thesis_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `thesis_documents` */
-
-/*Table structure for table `thesis_group` */
-
-DROP TABLE IF EXISTS `thesis_group`;
-
-CREATE TABLE `thesis_group` (
-  `thesis_group_id` int(11) NOT NULL AUTO_INCREMENT,
-  `thesis_title` varchar(255) DEFAULT NULL,
-  `thesis_exam_date` varchar(255) DEFAULT NULL,
-  `final_results` int(11) DEFAULT NULL,
-  `remarks` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`thesis_group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-/*Data for the table `thesis_group` */
-
-/*Table structure for table `thesis_group_members` */
-
-DROP TABLE IF EXISTS `thesis_group_members`;
-
-CREATE TABLE `thesis_group_members` (
-  `thesis_group_members_id` int(11) NOT NULL,
-  `thesis_group_id` int(11) DEFAULT NULL,
-  `student_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`thesis_group_members_id`),
-  KEY `student_id` (`student_id`),
-  KEY `thesis_group_id` (`thesis_group_id`),
-  CONSTRAINT `thesis_group_members_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`),
-  CONSTRAINT `thesis_group_members_ibfk_3` FOREIGN KEY (`thesis_group_id`) REFERENCES `thesis_group` (`thesis_group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-/*Data for the table `thesis_group_members` */
 
 /*Table structure for table `users` */
 

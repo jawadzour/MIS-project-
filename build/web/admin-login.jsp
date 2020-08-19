@@ -7,29 +7,28 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Management Information System</title>
-        <!-- Tell the browser to be responsive to screen width -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Ionicons -->
-        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-        <!-- SweetAlert2 -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Login Template</title>
+        <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/login.css">
+        <!--SweetAlert2--> 
         <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
-        <!-- Toastr -->
+        <!--Toastr--> 
         <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
-        <!-- jQuery -->
+        <!--jQuery--> 
         <script src="plugins/jquery/jquery.min.js"></script>
-        <!-- SweetAlert2 -->
+        <!--SweetAlert2--> 
         <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
-        <!-- Toastr -->
+        <!--Toastr--> 
         <script src="plugins/toastr/toastr.min.js"></script>
-
-        <jsp:include page="head_links.jsp"/>
     </head>
-    <body class="hold-transition login-page">
+    <body>
         <c:if test="${sessionScope.failed == 1}">
             <script>
                 $(document).ready(function () {
@@ -47,51 +46,48 @@
 
             </script>
         </c:if>
-        <div class="login-box">
-            <div class="login-logo">
-                <a href="#"><b>Admin</b>Login</a>
-            </div>
-            <!-- /.login-logo -->
-            <div class="card">
-                <div class="card-body login-card-body">
-                    <p class="login-box-msg">Sign in as Admin</p>
-
-                    <form action="UserController" method="post">
-                        <div class="input-group mb-3">
-                            <input id="inputEmail" name="email" type="email" class="form-control" placeholder="Email">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-envelope"></span>
+        <main class="d-flex align-items-center min-vh-100 py-3 py-md-0 "style="background: linear-gradient(to right, #1d976c, #99d9e8);">
+            <div class="container">
+                <div class="card login-card">
+                    <div class="row no-gutters">
+                        <div class="col-md-7">
+                            <img src="assets/images/bg.jpg" alt="login" class="login-card-img">
+                        </div>
+                        <div class="col-md-5">
+                            <div class="card-body">
+                                <div class="brand-wrapper">
+                                    <img src="assets/images/muet.png" alt="logo" class="logo">
                                 </div>
+                                <p class="login-card-description">Sign into your account</p>
+                                <form action="UserController" method="post">
+                                    <div class="form-group">
+                                        <label for="inputEmail" class="sr-only">Email</label>
+                                        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address">
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="inputPassword" class="sr-only">Password</label>
+                                        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="***********">
+                                    </div>
+                                    <input name="action" type="hidden" value="login"></input>
+                                    <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="Login">
+                                </form>
+                                <a href="#!" class="forgot-password-link">Forgot password?</a>
+                                <p class="login-card-footer-text">Don't have an account? <a href="#!" class="text-reset">Register here</a></p>
+                                <nav class="login-card-footer-nav">
+                                    <a href="#!">Terms of use.</a>
+                                    <a href="#!">Privacy policy</a>
+                                </nav>
                             </div>
                         </div>
-                        <div class="input-group mb-3">
-                            <input id="inputPassword" name="password" type="password" class="form-control" placeholder="Password">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-lock"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <input name="action" type="hidden" value="login"></input>
-                        <div class="row">
-                            <!-- /.col -->
-                            <div class="col-4">
-                                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-                            </div>
-                            <!-- /.col -->
-                        </div>
-                    </form>
-
-
+                    </div>
                 </div>
-                <!-- /.login-card-body -->
             </div>
-        </div>
-        <!-- /.login-box -->
+        </main>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
         <jsp:include page="bottom_links.jsp"/>
-
         <script src="js/user.js"></script>
-
     </body>
 </html>
+

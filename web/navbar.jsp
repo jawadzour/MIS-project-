@@ -98,7 +98,12 @@
                         <p>Fees Details</p>
                     </a>
                 </li>
-
+                <li class="nav-item">
+                    <a href="thesis.jsp" class="nav-link">
+                        <i class="nav-icon fas fa-users text-info"></i>
+                        <p>Thesis</p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="user.jsp" class="nav-link">
                         <i class="nav-icon fas fa-users text-info"></i>
