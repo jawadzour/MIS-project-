@@ -11,13 +11,27 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Fees Details</title>
         <jsp:include page="head_links.jsp"/>
+        <style>
+            .fa-pencil-alt {
+                color: white;
+            }
+            .fa-trash {
+                color: white;
+            }
+        </style>
     </head>
     <body class="hold-transition sidebar-mini">
         <!-- Site wrapper -->
         <div class="wrapper">
             <jsp:include page="student_navbar.jsp"/>
             <jsp:include page="student_topnavbar.jsp"/>
-            
+            <%
+                response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+                response.setHeader("pragma", "no-cache");
+                response.setHeader("Expires", "0");
+                if (session.getAttribute("student") != null) {
+            %>
+            <input type="hidden" id="studentSessionId" value="${sessionScope.student.studentId}"/>
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
@@ -116,7 +130,13 @@
                 </section>
             </div>
             <!-- /.content-wrapper -->
+            <%
+                } else {
+                    // If Session Expires
 
+                    response.sendRedirect("login.jsp");
+                }
+            %>
             <!-- Control Sidebar -->
             <aside class="control-sidebar control-sidebar-dark">
                 <!-- Control sidebar content goes here -->

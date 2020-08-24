@@ -32,7 +32,7 @@ public class HomeController extends HttpServlet {
         response.setHeader("pragma","no-cache");
         response.setHeader("Expires", "0");
         request.getSession().invalidate();
-        response.sendRedirect("admin-login.jsp");
+        response.sendRedirect("login.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

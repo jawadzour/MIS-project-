@@ -5,6 +5,9 @@
  */
 package com.muet.model;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 /**
  *
  * @author 92310
@@ -29,8 +32,8 @@ public class Student{
     private String address;
     private String currentAddress;
     private int semester;
-    private int departmentId;
-    private int batchId;
+    private Department department;
+    private String batch;
     private String  admissionDate;
     private int supervisorId;
     private String program;
@@ -167,20 +170,20 @@ public class Student{
         this.semester = semester;
     }
 
-    public int getDepartmentId() {
-        return departmentId;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setDepartmentId(int departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
-    public int getBatch() {
-        return batchId;
+    public String getBatch() {
+        return batch;
     }
 
-    public void setBatch(int batchId) {
-        this.batchId = batchId;
+    public void setBatch(String batchId) {
+        this.batch = batchId;
     }
 
     public String getAdmissionDate() {

@@ -49,4 +49,10 @@ public interface StudentFeesDao {
      * @return List of Faculty
      */
     public List<StudentFees> getStudentFee();
+    /**
+     *
+     * @param id
+     * @return List of Fee
+     */
+    public List<StudentFees> getFeesByStudentId(Integer id);
 }

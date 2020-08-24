@@ -29,8 +29,13 @@
         <div class="wrapper">
             <jsp:include page="student_navbar.jsp"/>
             <jsp:include page="student_topnavbar.jsp"/>
-
-
+            <%
+                response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+                response.setHeader("pragma", "no-cache");
+                response.setHeader("Expires", "0");
+                if (session.getAttribute("student") != null) {
+            %>
+            <input type="hidden" id="studentSessionId" value="${sessionScope.student.studentId}"/>
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
@@ -80,7 +85,13 @@
                 <!-- /.content -->
             </div>
             <!-- /.content-wrapper -->
+             <%
+                } else {
+                    // If Session Expires
 
+                    response.sendRedirect("login.jsp");
+                }
+            %>
 
             <!-- Control Sidebar -->
             <aside class="control-sidebar control-sidebar-dark">

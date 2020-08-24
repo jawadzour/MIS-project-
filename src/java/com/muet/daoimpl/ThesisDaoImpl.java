@@ -89,12 +89,12 @@ public class ThesisDaoImpl implements ThesisDao{
             pst.setInt(1, id);
             rst = pst.executeQuery();
             while (rst.next()) {
-                Student student = new Student();
-                student.setStudentId(rst.getInt("student_id"));
+                StudentDao studentDao = new StudentDaoImpl();
+                Student student = studentDao.getStudentById(rst.getInt("student_id"));
                 thesis.setStudent(student);
                 thesis.setThesisTitle(rst.getString("thesis_title"));
                 thesis.setThesisExamDate(rst.getString("thesis_exam_date"));
-                thesis.setThesisId(rst.getInt("thesis_group_id"));
+                thesis.setThesisId(rst.getInt("thesis_id"));
                 thesis.setFinalResults(rst.getInt("final_results"));
                 thesis.setRemarks(rst.getString("remarks"));
                 

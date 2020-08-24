@@ -35,6 +35,10 @@
         <servlet-name>ThesisController</servlet-name>
         <servlet-class>com.muet.controller.ThesisController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SeminarGroupController</servlet-name>
+        <servlet-class>com.muet.controller.SeminarGroupController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>FacultyController</servlet-name>
         <url-pattern>/FacultyController</url-pattern>
@@ -66,6 +70,10 @@
     <servlet-mapping>
         <servlet-name>ThesisController</servlet-name>
         <url-pattern>/ThesisController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SeminarGroupController</servlet-name>
+        <url-pattern>/SeminarGroupController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

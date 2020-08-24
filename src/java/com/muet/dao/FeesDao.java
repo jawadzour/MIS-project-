@@ -6,6 +6,7 @@
 package com.muet.dao;
 
 import com.muet.model.Fees;
+import com.muet.model.StudentFees;
 import java.util.List;
 
 /**
@@ -49,5 +50,7 @@ public interface FeesDao {
      * @return List of Faculty
      */
     public List<Fees> getFees();
+    
+    
    
 }

@@ -51,8 +51,10 @@ public class DepartmentDaoImpl implements DepartmentDao{
             pst.setInt(3, department.getDepartmentId());
             return pst.execute();
         } catch (SQLException ex) {
-            Logger.getLogger(FacultyDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DepartmentDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+            
+        
         return false;
     }
 
@@ -111,5 +113,19 @@ public class DepartmentDaoImpl implements DepartmentDao{
         }
         return departments;
     }
-    
+    @Override
+    public Boolean updateDepartmentOnly(Department department) {
+        con = DBConnection.getConnection();
+        try {
+            pst = con.prepareStatement("update department set department_name = ? where department_id = ?");
+            pst.setString(1, department.getDepartmentName());
+            pst.setInt(2, department.getDepartmentId());
+            return pst.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(DepartmentDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+        
+        return false;
+    }
 }

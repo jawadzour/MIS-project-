@@ -4,15 +4,15 @@
  * and open the template in the editor.
  */
 
-function showStudentFeeRecords() {
+function showStudentSeminarRecords() {
     var studentId = $("#studentSessionId").val();
     alert(studentId);
     $.ajax({
-        url: "FeesController",
+        url: "SeminarGroupController",
         method: "POST",
         async: false,
         data: {
-            action: "showStudentFeeRecords",
+            action: "showStudentSeminarRecords",
             studentId : studentId
         },
         success: function (data) {
@@ -20,15 +20,12 @@ function showStudentFeeRecords() {
             alert(data[0].studentFeesId);
             var html = "";
             for (var i = 0; i < data.length; i++) {
-                html += "<tr><td >" + data[i].fees.feesTitle + "</td>";
-                html += "<td >" + data[i].fees.amount + "</td>";
-                html += "<td >" + data[i].fees.announcementDate + "</td>";
-                html += "<td >" + data[i].fees.dueDate + "</td>";
-                html += "<td >" + data[i].datePaid + "</td>";
-                html += "<td >" + data[i].amountPaid + "</td>";
-                html += "<td >" + data[i].lateFees + "</td>";
-                html += "<td >" + data[i].challanNumber + "</td>";
-                html += "<td >No Image</td>";
+                html += "<tr><td >" + data[i].seminar.seminarTitle + "</td>";
+                html += "<td >" + data[i].thesis.thesisTitle + "</td>";
+                html += "<td >" + data[i].dateApplied + "</td>";
+                html += "<td >" + data[i].dateConducted + "</td>";
+                html += "<td >" + data[i].remarks + "</td>";
+                html += "<td >" + data[i].comments + "</td>";
                 html += "<td class='text-center py-0 align-middle'><div class='btn-group btn-group-sm'>";
                 html += "<a type='button' class='btn btn-info' onclick='getData(" + data[i].feesId + ");'><i class='fas fa-pencil-alt'></i></a>";
                 html += "<a type='button' class='btn btn-danger' onclick='deleteData(" + data[i].feesId + ");'><i class='fas fa-trash'></i></a>";
@@ -41,7 +38,7 @@ function showStudentFeeRecords() {
 }
 
 $(document).ready( function() {
-    showStudentFeeRecords();
+    showStudentSeminarRecords();
     $(function () {
         $("#example1").DataTable({
             "responsive": true,

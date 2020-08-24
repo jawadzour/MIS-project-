@@ -5,30 +5,30 @@
  */
 package com.muet.dao;
 
-import com.muet.model.Student;
+import com.muet.model.Seminar;
 import java.util.List;
 
 /**
  *
  * @author 92310
  */
-public interface StudentDao {
-    public Integer addStudent(Student student);
+public interface SeminarDao {
+    public Boolean addSeminar(Seminar seminar);
     
     /**
      *
-     * @param student 
+     * @param seminar
      * @return 
      */
     
-    public Boolean updateStudent(Student student);
+    public Boolean updateSeminar(Seminar seminar);
     
     /**
      * @param id
      * @return 
      */
     
-    public Boolean deleteStudent(Integer id );
+    public Boolean deleteSeminar(Integer id);
 
     /**
      *
@@ -36,18 +36,18 @@ public interface StudentDao {
      * @return 
      */
 
-    public Student getStudentById(Integer id);
+    public Seminar getSeminarById(Integer id);
     
     /**
      *
-     * @return List of Faculty
+     * @return List of Seminar
      */
-    public List<Student> getStudents();
+    public List<Seminar> getSeminars();
     /**
      *
-     * @param studentName
+     * @param seminarTitle
      * @return 
      */
 
-    public Student getStudentByStudentName(String studentName);
+    public Seminar getSeminarBySeminarName(String seminarTitle);
 }

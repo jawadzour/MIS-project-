@@ -6,25 +6,24 @@
 package com.muet.controller;
 
 import com.google.gson.Gson;
-import com.muet.dao.FeesDao;
-import com.muet.dao.StudentFeesDao;
-import com.muet.daoimpl.FeesDaoImpl;
-import com.muet.daoimpl.StudentFeesDaoImpl;
-import com.muet.model.Fees;
-import com.muet.model.StudentFees;
+import com.muet.dao.SeminarDao;
+import com.muet.daoimpl.SeminarDaoImpl;
+import com.muet.model.Seminar;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author khatr
+ * @author 92310
  */
-public class FeesController extends HttpServlet {
+@WebServlet(name = "SeminarController", urlPatterns = {"/SeminarController"})
+public class SeminarController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -49,8 +48,8 @@ public class FeesController extends HttpServlet {
                 case "add":
                     addData(request, response);
                     break;
-                case "getFeesRecord":
-                    getFeesRecord(request, response);
+                case "getSeminarRecord":
+                    getSeminarRecord(request, response);
                     break;
                 case "update":
                     updateData(request, response);
@@ -58,8 +57,6 @@ public class FeesController extends HttpServlet {
                 case "delete":
                     deleteData(request, response);
                     break;
-                case "showStudentFeeRecords":
-                    showStudentFeeRecords(request, response);
                 default:
                     break;
             }
@@ -75,7 +72,6 @@ public class FeesController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
@@ -89,7 +85,6 @@ public class FeesController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
@@ -100,62 +95,50 @@ public class FeesController extends HttpServlet {
      *
      * @return a String containing servlet description
      */
-    @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
     private void viewData(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        FeesDao feesDao = new FeesDaoImpl();
-        List<Fees> feeses = feesDao.getFees();
+        SeminarDao seminarDao = new SeminarDaoImpl();
         PrintWriter pw = response.getWriter();
+        List<Seminar> seminar = seminarDao.getSeminars();
         Gson gson = new Gson();
-        pw.write(gson.toJson(feeses));
+        pw.write(gson.toJson(seminar));
     }
 
     private void addData(HttpServletRequest request, HttpServletResponse response) {
-        Fees fees = new Fees();
-        fees.setFeesTitle(request.getParameter("feesTitle"));
-        fees.setAmount(Integer.parseInt(request.getParameter("amount")));
-        fees.setAnnouncementDate(request.getParameter("announcementDate"));
-        fees.setDueDate(request.getParameter("dueDate"));
-        FeesDao feesDao = new FeesDaoImpl();
-        feesDao.addFees(fees);
+        Seminar seminar = new Seminar();
+        seminar.setSeminarTitle(request.getParameter("seminarTitle"));
+        SeminarDao seminarDao = new SeminarDaoImpl();
+        seminarDao.addSeminar(seminar);
     }
 
-    private void getFeesRecord(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        Integer id = Integer.parseInt(request.getParameter("feesId"));
-        FeesDao feesDao = new FeesDaoImpl();
-        Fees fees = feesDao.getFeesById(id);
+    private void getFacultyRecord(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Integer id = Integer.parseInt(request.getParameter("seminarId"));   
+        SeminarDao seminarDao = new SeminarDaoImpl();
         PrintWriter pw = response.getWriter();
+        Seminar seminar=seminarDao.getSeminarById(id);
         Gson gson = new Gson();
-        pw.write(gson.toJson(fees));
+        pw.write(gson.toJson(seminar));
     }
 
     private void updateData(HttpServletRequest request, HttpServletResponse response) {
-        Fees fees = new Fees();
-        fees.setFeesTitle(request.getParameter("feesTitle"));
-        fees.setAmount(Integer.parseInt(request.getParameter("amount")));
-        fees.setAnnouncementDate(request.getParameter("announcementDate"));
-        fees.setDueDate(request.getParameter("dueDate"));
-        fees.setFeesId(Integer.parseInt(request.getParameter("feesId")));
-        FeesDao feesDao = new FeesDaoImpl();
-        feesDao.updateFees(fees);
+        Seminar seminar = new Seminar();
+        seminar.setSeminarId(Integer.parseInt(request.getParameter("seminarId")));
+        seminar.setSeminarTitle(request.getParameter("seminarTitle"));
+        SeminarDao seminarDao = new SeminarDaoImpl();
+        seminarDao.updateSeminar(seminar);
     }
 
     private void deleteData(HttpServletRequest request, HttpServletResponse response) {
-        Integer id = Integer.parseInt(request.getParameter("feesId"));
-        FeesDao feesDao = new FeesDaoImpl();
-        feesDao.deleteFees(id);
+        SeminarDao seminarDao = new SeminarDaoImpl();
+        Integer id = Integer.parseInt(request.getParameter("seminarId"));
+        seminarDao.deleteSeminar(id);
     }
 
-    private void showStudentFeeRecords(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        Integer studentId = Integer.parseInt(request.getParameter("studentId"));
-        StudentFeesDao studentFeesDao = new StudentFeesDaoImpl();
-        List<StudentFees> list = studentFeesDao.getFeesByStudentId(studentId);
-        PrintWriter pw = response.getWriter();
-        Gson gson = new Gson();
-        pw.write(gson.toJson(list));
+    private void getSeminarRecord(HttpServletRequest request, HttpServletResponse response) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -23,12 +23,12 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-<!--        <li>
+        <li>
             <form action="HomeController" method="post">
                 <input type="submit" class="btn btn-primary" value="Logout"/>
             </form>
 
-        </li>-->
+        </li>
         <li class="nav-item">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
                 <i class="fas fa-th-large"></i>

@@ -60,7 +60,7 @@ CREATE TABLE `batch` (
   `batch_id` int(11) NOT NULL AUTO_INCREMENT,
   `batch_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`batch_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `batch` */
 
@@ -75,9 +75,11 @@ CREATE TABLE `department` (
   PRIMARY KEY (`department_id`),
   KEY `faculty_id` (`faculty_id`),
   CONSTRAINT `department_ibfk_1` FOREIGN KEY (`faculty_id`) REFERENCES `faculty` (`faculty_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
 /*Data for the table `department` */
+
+insert  into `department`(`department_id`,`department_name`,`faculty_id`) values (29,'SW',7);
 
 /*Table structure for table `department_faculty` */
 
@@ -171,33 +173,38 @@ insert  into `fees`(`fees_id`,`fees_title`,`amount`,`announcement_date`,`due_dat
 DROP TABLE IF EXISTS `seminar`;
 
 CREATE TABLE `seminar` (
-  `seminar_id` int(11) NOT NULL,
+  `seminar_id` int(11) NOT NULL AUTO_INCREMENT,
   `seminar_title` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`seminar_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `seminar` */
+
+insert  into `seminar`(`seminar_id`,`seminar_title`) values (1,'SW Lectures');
 
 /*Table structure for table `seminar_thesis` */
 
 DROP TABLE IF EXISTS `seminar_thesis`;
 
 CREATE TABLE `seminar_thesis` (
-  `seminar_group_id` int(11) NOT NULL,
+  `seminar_group_id` int(11) NOT NULL AUTO_INCREMENT,
   `seminar_id` int(11) DEFAULT NULL,
   `thesis_id` int(11) DEFAULT NULL,
-  `date_applied` varchar(255) DEFAULT NULL,
-  `date_conducted` varchar(255) DEFAULT NULL,
+  `date_applied` date DEFAULT NULL,
+  `date_conducted` date DEFAULT NULL,
   `remarks` varchar(255) DEFAULT NULL,
   `comments` varchar(1000) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`seminar_group_id`),
   KEY `seminar_id` (`seminar_id`),
   KEY `thesis_id` (`thesis_id`),
-  CONSTRAINT `seminar_thesis_ibfk_1` FOREIGN KEY (`seminar_id`) REFERENCES `seminar` (`seminar_id`),
-  CONSTRAINT `seminar_thesis_ibfk_2` FOREIGN KEY (`thesis_id`) REFERENCES `thesis` (`thesis_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `seminar_thesis_ibfk_2` FOREIGN KEY (`thesis_id`) REFERENCES `thesis` (`thesis_id`),
+  CONSTRAINT `seminar_thesis_ibfk_3` FOREIGN KEY (`seminar_id`) REFERENCES `seminar` (`seminar_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `seminar_thesis` */
+
+insert  into `seminar_thesis`(`seminar_group_id`,`seminar_id`,`thesis_id`,`date_applied`,`date_conducted`,`remarks`,`comments`,`status`) values (1,1,1,'2020-08-19','2020-08-27','Amazing ','Very Good','Approved');
 
 /*Table structure for table `student` */
 
@@ -210,7 +217,7 @@ CREATE TABLE `student` (
   `fathers_name` varchar(255) DEFAULT NULL,
   `legal_id` varchar(255) DEFAULT NULL,
   `legal_id_no` varchar(255) DEFAULT NULL,
-  `nationality` int(11) DEFAULT NULL,
+  `nationality` varchar(255) DEFAULT NULL,
   `place_of_issue_of_legal_id` varchar(255) DEFAULT NULL,
   `date_of_issue_of_legal_id` date DEFAULT NULL,
   `mobile` varchar(255) DEFAULT NULL,
@@ -241,11 +248,11 @@ CREATE TABLE `student` (
   KEY `department_id` (`department_id`),
   CONSTRAINT `student_ibfk_6` FOREIGN KEY (`supervisor_id`) REFERENCES `department_faculty` (`department_faculty_id`),
   CONSTRAINT `student_ibfk_7` FOREIGN KEY (`department_id`) REFERENCES `department` (`department_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `student` */
 
-insert  into `student`(`student_id`,`roll_number`,`full_name`,`fathers_name`,`legal_id`,`legal_id_no`,`nationality`,`place_of_issue_of_legal_id`,`date_of_issue_of_legal_id`,`mobile`,`dob`,`email`,`domicile`,`country_of_birth`,`blood_group`,`religion`,`address`,`current_address`,`semester`,`department_id`,`batch`,`admission_date`,`supervisor_id`,`program`,`field_program`,`shift`,`timing`) values (1,'f15',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,'F16SW49','Nand Lal',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+insert  into `student`(`student_id`,`roll_number`,`full_name`,`fathers_name`,`legal_id`,`legal_id_no`,`nationality`,`place_of_issue_of_legal_id`,`date_of_issue_of_legal_id`,`mobile`,`dob`,`email`,`domicile`,`country_of_birth`,`blood_group`,`religion`,`address`,`current_address`,`semester`,`department_id`,`batch`,`admission_date`,`supervisor_id`,`program`,`field_program`,`shift`,`timing`) values (1,'f15','Raheem',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,29,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,'76','Jawad Nabi','Ghulam Nabi','22','3','Pakistani','Sujawal',NULL,'09800','1994-07-12','kfkaek@gmail.com','Sujawal','Pakistan','O+ve','Islam','lasdkfklad','askdnfka',8,29,'F16','2016-11-19',NULL,'BE','SW','morning','8 to 3');
 
 /*Table structure for table `student_fees` */
 
@@ -282,10 +289,14 @@ CREATE TABLE `thesis` (
   `thesis_exam_date` varchar(255) DEFAULT NULL,
   `final_results` int(11) DEFAULT NULL,
   `remarks` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`thesis_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`thesis_id`),
+  KEY `student_id` (`student_id`),
+  CONSTRAINT `thesis_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `thesis` */
+
+insert  into `thesis`(`thesis_id`,`student_id`,`thesis_title`,`thesis_exam_date`,`final_results`,`remarks`) values (1,1,'MIS',NULL,NULL,NULL);
 
 /*Table structure for table `thesis_documents` */
 
@@ -312,12 +323,16 @@ CREATE TABLE `users` (
   `full_name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `role` varchar(255) DEFAULT NULL,
+  `student_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`user_id`),
+  KEY `student_id` (`student_id`),
+  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `users` */
 
-insert  into `users`(`user_id`,`full_name`,`email`,`password`) values (2,'Nand Lal','nkhatri558@gmail.com','123');
+insert  into `users`(`user_id`,`full_name`,`email`,`password`,`role`,`student_id`) values (2,'Nand Lal','nkhatri558@gmail.com','123','admin',NULL),(3,'Jawad Nabi','jawadzour786@gmail.com','2233','user',NULL),(4,'Raheem','raheem@gmail.com','123','student',1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

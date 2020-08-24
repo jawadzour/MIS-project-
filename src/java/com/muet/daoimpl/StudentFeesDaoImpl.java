@@ -7,6 +7,7 @@ package com.muet.daoimpl;
 
 import com.muet.connection.DBConnection;
 import com.muet.dao.FeesDao;
+import com.muet.dao.StudentDao;
 import com.muet.model.Fees;
 import com.muet.model.Student;
 import com.muet.model.StudentFees;
@@ -131,6 +132,35 @@ public class StudentFeesDaoImpl implements StudentFeesDao{
             Logger.getLogger(StudentFeesDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return studentFee;
+    }
+    
+    @Override
+    public List<StudentFees> getFeesByStudentId(Integer id) {
+        List<StudentFees> studentFeeRecords = new ArrayList<>();
+        try {
+            pst = con.prepareStatement("select * from student_fees where student_id = ?;");
+            pst.setInt(1, id);
+            rst = pst.executeQuery();
+            while (rst.next()) {
+                StudentFees studentFees = new StudentFees();
+                studentFees.setStudentFeesId(rst.getInt("student_fees_id"));
+                StudentDao studentDao = new StudentDaoImpl();
+                Student student = studentDao.getStudentById(rst.getInt("student_id"));
+                FeesDao feesDao = new FeesDaoImpl();
+                Fees fees = feesDao.getFeesById(rst.getInt("fees_id"));
+                studentFees.setStudent(student);
+                studentFees.setFees(fees);
+                studentFees.setDatePaid(rst.getString("date_paid"));
+                studentFees.setAmountPaid(rst.getInt("amount_paid"));
+                studentFees.setChallanNumber(rst.getInt("challan_no"));
+                studentFees.setLateFees(rst.getInt("late_fees"));
+                studentFeeRecords.add(studentFees);
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FeesDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return studentFeeRecords;
     }
     
 }

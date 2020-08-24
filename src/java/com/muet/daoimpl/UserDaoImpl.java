@@ -6,7 +6,9 @@
 package com.muet.daoimpl;
 
 import com.muet.connection.DBConnection;
+import com.muet.dao.StudentDao;
 import com.muet.dao.UserDao;
+import com.muet.model.Student;
 import com.muet.model.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -43,6 +45,14 @@ public class UserDaoImpl implements UserDao {
                 user.setUserId(rst.getInt("user_id"));
                 user.setFullName(rst.getString("full_name"));
                 user.setEmail(rst.getString("email"));
+                user.setRole(rst.getString("role"));
+                Integer studentId = rst.getInt("student_id");
+                if(studentId != null) {
+                    StudentDao studentDao = new StudentDaoImpl();
+                    Student student = studentDao.getStudentById(studentId);
+                    user.setStudent(student);
+                }
+                
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -54,10 +64,11 @@ public class UserDaoImpl implements UserDao {
     @Override
     public Boolean addUser(User user) {
         try {
-            pst = con.prepareStatement("insert into users (full_name, email, password) values (?,?,?);");
+            pst = con.prepareStatement("insert into users (full_name, email, password, role) values (?,?,?, ?);");
             pst.setString(1, user.getFullName());
             pst.setString(2, user.getEmail());
             pst.setString(3, user.getPassword());
+            pst.setString(4, "user");
             return pst.execute();
         } catch (SQLException ex) {
             Logger.getLogger(UserDaoImpl.class.getName()).log(Level.SEVERE, null, ex);

@@ -33,10 +33,8 @@
                 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
                 response.setHeader("pragma", "no-cache");
                 response.setHeader("Expires", "0");
-                // If Session Exists
                 if (session.getAttribute("user") != null) {
             %>
-            
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
@@ -126,6 +124,7 @@
             <%
                 } else {
                     // If Session Expires
+
                     response.sendRedirect("admin-login.jsp");
                 }
             %>

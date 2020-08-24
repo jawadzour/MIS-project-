@@ -133,7 +133,7 @@
             <%
                 } else {
                     // If Sessions Expires
-                    response.sendRedirect("admin-login.jsp");
+                    response.sendRedirect("login.jsp");
                 }
             %>
 

@@ -146,7 +146,7 @@
                 } else {
                     // If Session Expires
 
-                    response.sendRedirect("admin-login.jsp");
+                    response.sendRedirect("login.jsp");
                 }
             %>
 

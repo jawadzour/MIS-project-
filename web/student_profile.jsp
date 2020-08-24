@@ -36,7 +36,8 @@
                 // If Session Exists
                 if (session.getAttribute("user") != null) {
             %>
-
+            
+            <input type="hidden" id="studentId" value="${param.id}"/>
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
@@ -236,6 +237,8 @@
                                                                 <div class="form-group">
                                                                     <label for="inputDepartment">Deparment</label>
                                                                     <input type="email" class="form-control" id="inputDepartment" placeholder="Nand Lal">
+                                                                    <input type="hidden" class="form-control" id="inputDepartmentId" >
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -533,7 +536,7 @@
             <%
                 } else {
                     // If Session Expires
-                    response.sendRedirect("admin-login.jsp");
+                    response.sendRedirect("login.jsp");
                 }
             %>
 

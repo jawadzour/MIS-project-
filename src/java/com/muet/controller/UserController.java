@@ -75,8 +75,12 @@ public class UserController extends HttpServlet {
         System.out.println("------------>" + user.getFullName());
         if (user.getFullName() == null) {
             request.getSession().setAttribute("failed", 1);
-            response.sendRedirect("admin-login.jsp");
-        } else {
+            response.sendRedirect("login.jsp");
+        } else if(user.getRole().equals("student")) {
+            request.getSession().setAttribute("student", user.getStudent());
+            response.sendRedirect("student_dashboard.jsp");
+        }
+        else if(user.getRole().equals("admin") || user.getRole().equals("user")) {
             request.getSession().setAttribute("user", user);
             //request.getRequestDispatcher("index.jsp").include(request, response);
             response.sendRedirect("index.jsp");

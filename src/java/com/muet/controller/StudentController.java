@@ -6,8 +6,11 @@
 package com.muet.controller;
 
 import com.google.gson.Gson;
+import com.muet.dao.DepartmentDao;
 import com.muet.dao.StudentDao;
+import com.muet.daoimpl.DepartmentDaoImpl;
 import com.muet.daoimpl.StudentDaoImpl;
+import com.muet.model.Department;
 import com.muet.model.Student;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -134,21 +137,21 @@ public class StudentController extends HttpServlet {
         PrintWriter pw = response.getWriter();
         int id = Integer.parseInt(request.getParameter("studentId"));
         studentId = id;
-        List<Student> student = (List<Student>) studentDao.getStudentById(id);
+        Student student = studentDao.getStudentById(id);
         Gson gson = new Gson();
         pw.write(gson.toJson(student));
     }
 
     private void updateData(HttpServletRequest request, HttpServletResponse response) throws ParseException {
         //To change body of generated methods, choose Tools | Templates.
-        System.out.println("Update controller is working ");
+
         Student student = new Student();
-        StudentDao studentDao=new StudentDaoImpl();
+        StudentDao studentDao = new StudentDaoImpl();
         Integer id = Integer.parseInt(request.getParameter("studentId"));
         student.setStudentId(id);
         student.setAddress(request.getParameter("address"));
         student.setAdmissionDate(request.getParameter("admissionDate"));
-        student.setBatch(Integer.parseInt(request.getParameter("batchId")));
+        student.setBatch(request.getParameter("batch"));
         student.setBloodGroup(request.getParameter("bloodGroup"));
         student.setCountryOfBirth(request.getParameter("countryOfBirth"));
         student.setCurrentAddress(request.getParameter("currentAddress"));
@@ -169,6 +172,14 @@ public class StudentController extends HttpServlet {
         student.setSemester(Integer.parseInt(request.getParameter("semester")));
         student.setShift(request.getParameter("shift"));
         student.setTiming(request.getParameter("timing"));
+        Integer departmentId = Integer.parseInt(request.getParameter("departmentId"));
+        String departmentName = request.getParameter("departmentName");
+        Department department = new Department();
+        DepartmentDao departmentDao = new DepartmentDaoImpl();
+        department.setDepartmentId(departmentId);
+        department.setDepartmentName(departmentName);
+        departmentDao.updateDepartmentOnly(department);
+        student.setDepartment(department);
         studentDao.updateStudent(student);
     }
 
@@ -183,8 +194,8 @@ public class StudentController extends HttpServlet {
         //To change body of generated methods, choose Tools | Templates.
         StudentDao studentDao = new StudentDaoImpl();
         PrintWriter pw = response.getWriter();
-        Integer id = studentId;
-        List<Student> student = (List<Student>) studentDao.getStudentById(id);
+        Integer id = Integer.parseInt(request.getParameter("id"));
+        Student student = studentDao.getStudentById(id);
         Gson gson = new Gson();
         pw.write(gson.toJson(student));
 

@@ -30,9 +30,10 @@ public interface DepartmentDao {
     public Boolean updateDepartment(Department department);
     
     /**
-     * @param id
+     * @param department
      * @return 
      */
+    public Boolean updateDepartmentOnly(Department department);
     
     public Boolean deleteDepartment(Integer id);
 
