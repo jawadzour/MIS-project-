@@ -95,7 +95,8 @@
                                         <thead>
                                             <tr>
                                                 <th>Name</th>
-                                                <th>RollNo</th>
+                                                <th>Roll Number</th>
+                                                <th>Registration Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -105,7 +106,8 @@
                                         <tfoot>
                                             <tr>
                                                 <th>Name</th>
-                                                <th>RollNo</th>
+                                                <th>Roll Number</th>
+                                                <th>Registration Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>

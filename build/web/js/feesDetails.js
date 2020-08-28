@@ -27,7 +27,6 @@ function saveStudentFees() {
             resetFields();
             showData();
             $("html").animate({scrollTop: $(document).height()}, 1000);
-            alert("Data Added Successfully!");
         },
         error: function (data, textStatus, jqXHR) {
             alert("Error");

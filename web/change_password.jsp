@@ -1,7 +1,7 @@
 <%-- 
-    Document   : student.jsp
-    Created on : Jul 13, 2020, 9:59:37 AM
-    Author     : 92310
+    Document   : change_password
+    Created on : Aug 28, 2020, 8:01:32 PM
+    Author     : khatr
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -27,14 +27,15 @@
     <body class="hold-transition sidebar-mini">
         <!-- Site wrapper -->
         <div class="wrapper">
-            <jsp:include page="navbar.jsp"/>
-            <jsp:include page="top_navbar.jsp"/>
+            <jsp:include page="student_navbar.jsp"/>
+            <jsp:include page="student_topnavbar.jsp"/>
             <%
                 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
                 response.setHeader("pragma", "no-cache");
                 response.setHeader("Expires", "0");
-                if (session.getAttribute("user") != null) {
+                if (session.getAttribute("student") != null) {
             %>
+            <input type="hidden" id="studentSessionId" value="${sessionScope.student.studentId}"/>
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
@@ -42,12 +43,12 @@
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1>Manage Students</h1>
+                                <h1>Update Password</h1>
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
-                                    <li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
-                                    <li class="breadcrumb-item active">Student</li>
+                                    <li class="breadcrumb-item"><a href="student_dashboard.jsp">Home</a></li>
+                                    <li class="breadcrumb-item active">Change Password</li>
                                 </ol>
                             </div>
                         </div>
@@ -59,61 +60,37 @@
                         <div class="col-md-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Add Student</h3>
+                                    <h3 class="card-title">Change Password</h3>
 
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                                             <i class="fas fa-minus"></i></button>
                                     </div>
                                 </div>
-                                <form id="facultyForm" method="POST">
+                                <form id="changePasswordForm" method="POST">
+                                    <input type="hidden" value="${sessionScope.student.studentId}" id="studentId">
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="inputStudent">Name</label>
-                                            <input name="studentName" type="text" id="studentName" class="form-control">
+                                            <label for="inputCurrentPassword">Current Password*</label>
+                                            <input name="changePassword" type="password" id="inputCurrentPassword" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputStudent">RollNo</label>
-                                            <input name="studentRollNo" type="text" id="studentRollNo" class="form-control">
+                                            <label for="inputNewPassword">New Password*</label>
+                                            <input name="newPassword" type="password" id="inputNewPassword" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <input id="submitBtn1" type="submit" value="Add New Student" class="btn btn-success float-right">
+                                            <label for="inputConfirmPassword">Confirm New Password*</label>
+                                            <input name="confirmPassword" type="password" id="inputConfirmPassword" class="form-control">
                                         </div>
+                                        <div class="form-group">
+                                            <input id="changeBtn" type="submit" value="Update Password" class="btn btn-success float-right" >
+                                        </div>
+
+
                                     </div>
                                     <!-- /.card-body -->
                                 </form>
 
-                            </div>
-                            <!-- /.card -->
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3 class="card-title">Students </h3>
-                                </div>
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Roll Number</th>
-                                                <th>Registration Status</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="tab">
-
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Roll Number</th>
-                                                <th>Registration Status</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
-                                <!-- /.card-body -->
                             </div>
                             <!-- /.card -->
                         </div>
@@ -127,9 +104,11 @@
                 } else {
                     // If Session Expires
 
-                    response.sendRedirect("admin-login.jsp");
+                    response.sendRedirect("login.jsp");
                 }
             %>
+
+
 
             <!-- Control Sidebar -->
             <aside class="control-sidebar control-sidebar-dark">
@@ -141,6 +120,6 @@
 
         <jsp:include page="bottom_links.jsp"/>
         <!-- page script -->
-        <script src="js/student.js"></script>
+        <script src="js/user.js"></script>
     </body>
 </html>

@@ -6,7 +6,6 @@
 
 function showStudentFeeRecords() {
     var studentId = $("#studentSessionId").val();
-    alert(studentId);
     $.ajax({
         url: "FeesController",
         method: "POST",
@@ -17,7 +16,6 @@ function showStudentFeeRecords() {
         },
         success: function (data) {
             var data = JSON.parse(data);
-            alert(data[0].studentFeesId);
             var html = "";
             for (var i = 0; i < data.length; i++) {
                 html += "<tr><td >" + data[i].fees.feesTitle + "</td>";

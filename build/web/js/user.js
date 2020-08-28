@@ -124,6 +124,25 @@ function deleteData(id) {
         }
     });
 }
+function changePassword() {
+    var password = $("#inputNewPassword").val();
+    var studentId = $("#studentId").val();
+    $.ajax({
+        type: "POST",
+        url: "UserController",
+        data: {
+            action: "changePassword",
+            password: password,
+            studentId: studentId
+        },
+        success: function (data, textStatus, jqXHR) {
+            window.location.href = "student_dashboard.jsp";
+        },
+        error: function (data, textStatus, jqXHR) {
+            alert("Error");
+        }
+    });
+}
 $(document).ready(function () {
     showData();
     $(function () {
@@ -167,6 +186,41 @@ $(document).ready(function () {
             $(element).removeClass('is-invalid');
         }
     });
+    $("#changePasswordForm").validate({
+        rules: {
+            currentPassword: {
+                required: true
+            },
+            newPassword: {
+                required: true
+            },
+            confirmPassword: {
+                required: true
+            }
+        },
+        messages: {
+            currentPassword: {
+                required: "Please Enter Current Password"
+            },
+            newPassword: {
+                required: "Please Enter New Password"
+            },
+            confirmPassword: {
+                required: "Please Re-enter New Password"
+            }
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+        }
+    });
 });
 $("#submitBtn").on("click", function() {
     if($("#userForm").valid()) {
@@ -181,4 +235,14 @@ $("#submitBtn").on("click", function() {
 if (window.history.replaceState) {
     window.history.replaceState(null, null, window.location.href);
 }
+$("#changeBtn").on("click", function() {
+    if($("#changePasswordForm").valid()) {
+        if($("#inputNewPassword").val() !== $("#inputConfirmPassword").val()) {
+            alert("New Password and Confirm Password Should be same");
+        }
+        else {
+            changePassword();
+        }
+    }
+});
 

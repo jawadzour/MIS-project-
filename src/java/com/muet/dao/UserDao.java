@@ -5,6 +5,7 @@
  */
 package com.muet.dao;
 
+import com.muet.model.Student;
 import com.muet.model.User;
 import java.util.List;
 
@@ -51,4 +52,8 @@ public interface UserDao {
      * @return List of Faculty
      */
     public List<User> getUsers();
+    
+    public Boolean addStudent(Student student);
+    public Boolean updateStudent(Student student);
+    public Boolean changePassword(String password, Integer studentId);
 }

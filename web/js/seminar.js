@@ -2,7 +2,6 @@
 var seminarGroupId;
 
 function showData() {
-    alert("alert is working");
     $.ajax({
         url: "SeminarGroupController",
         method: "POST",

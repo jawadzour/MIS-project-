@@ -44,6 +44,13 @@ public interface DepartmentDao {
      */
 
     public Department getDepartmentById(Integer id);
+    /**
+     *
+     * @param departmentName
+     * @return 
+     */
+
+    public Department getDepartmentByName(String departmentName);
     
     /**
      *

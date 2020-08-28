@@ -38,6 +38,7 @@ public class DepartmentDaoImpl implements DepartmentDao{
         } catch (SQLException ex) {
             Logger.getLogger(FacultyDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         return false;
     }
 
@@ -68,6 +69,7 @@ public class DepartmentDaoImpl implements DepartmentDao{
         } catch (SQLException ex) {
             Logger.getLogger(FacultyDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         return false;
     }
 
@@ -89,6 +91,7 @@ public class DepartmentDaoImpl implements DepartmentDao{
         } catch (SQLException ex) {
             Logger.getLogger(DepartmentDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         return department;
     }
 
@@ -111,6 +114,7 @@ public class DepartmentDaoImpl implements DepartmentDao{
         } catch (SQLException ex) {
             Logger.getLogger(DepartmentDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         return departments;
     }
     @Override
@@ -124,8 +128,30 @@ public class DepartmentDaoImpl implements DepartmentDao{
         } catch (SQLException ex) {
             Logger.getLogger(DepartmentDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
+           
         
         return false;
+    }
+
+    @Override
+    public Department getDepartmentByName(String departmentName) {
+        con = DBConnection.getConnection();
+        Department department = new Department();
+        try {
+            pst = con.prepareStatement("SELECT * from department where department_name = ?");
+            pst.setString(1, departmentName);
+            rst = pst.executeQuery();
+            while(rst.next()) {
+                department.setDepartmentId(rst.getInt("department_id"));
+                department.setDepartmentName(rst.getString("department_name"));
+                FacultyDao facultyDao = new FacultyDaoImpl();
+                Faculty faculty = facultyDao.getFacultyById(rst.getInt("faculty_id"));
+                department.setFaculty(faculty);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DepartmentDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return department;
     }
 }

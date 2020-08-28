@@ -3,6 +3,7 @@
     Created on : Aug 20, 2020, 8:30:20 PM
     Author     : khatr
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!-- Main Sidebar Container -->
@@ -26,10 +27,18 @@
         <!--Sidebar user (optional)--> 
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                <c:choose>
+                    <c:when test="${sessionScope.student.profileImage != null}">
+                        <img src="${sessionScope.student.profileImage}" class="img-circle elevation-2" alt="User Image" width="160" height="160">
+                    </c:when>
+                    <c:otherwise>
+                        <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                    </c:otherwise>
+                </c:choose>
+                
             </div>
             <div class="info">
-                <a href="student_dashboard.jsp" class="d-block">Student</a>
+                <a href="student_dashboard.jsp" class="d-block">${sessionScope.student.fullName}</a>
             </div>
         </div>
 
@@ -42,27 +51,33 @@
                     <a href="student_dashboard.jsp" class="nav-link"">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Dashboard
+                            Home
                         </p>
                     </a>
 
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">                        
+<!--                <li class="nav-item">
+                    <a href="student_registration.jsp" class="nav-link">                        
                         <i class="nav-icon fas fa-money-bill text-info"></i>
-                        <p>Profile</p>
+                        <p>Registration</p>
                     </a>
-                </li>
+                </li>-->
                 <li class="nav-item">
                     <a href="student_fees.jsp" class="nav-link">                        
-                        <i class="nav-icon fas fa-money-bill text-info"></i>
+                        <i class="nav-icon fas fa-money-bill"></i>
                         <p>Fees</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="student_seminar.jsp" class="nav-link">                        
-                        <i class="nav-icon fas fa-money-bill text-info"></i>
+                        <i class="nav-icon fas fa-file-powerpoint"></i>
                         <p>Seminar</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="change_password.jsp" class="nav-link">                        
+                        <i class="nav-icon fas fa-key"></i>
+                        <p>Update Password</p>
                     </a>
                 </li>
             </ul>

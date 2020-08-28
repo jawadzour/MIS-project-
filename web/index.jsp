@@ -46,46 +46,74 @@
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1>Blank Page</h1>
+                                <h1>Dashboard</h1>
+
+                                <div class="card card-primary" id="areaId" style="height: 350px; width: 1050px;">
+                                    <div class="card-header" >
+                                        <h3 class="card-title">Male and Female ratio</h3>
+
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body" >
+                                        <div class="chart">
+                                            <canvas id="areaChart" style="height: 250px; width: 1050px;"></canvas>
+
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
+                                </div>
+                                <div class="col-md-6">
+
+                                    <!-- DONUT CHART -->
+                                    <div class="card card-danger" id="donutId" style="height: 350px; width: 1050px;">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Donut Chart</h3>
+
+                                            <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+                                    <!-- /.card -->
+
+                                    <!-- BAR CHART -->
+                                    <div class="card card-success" style="height: 350px; width: 1050px;">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Bar Chart</h3>
+
+                                            <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="chart">
+                                                <canvas id="barChart" style="height: 350px; width:200px;"></canvas>
+                                            </div>
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+
+                                </div>
+
                             </div>
-                            <div class="col-sm-6">
-                                <ol class="breadcrumb float-sm-right">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active">Blank Page</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div><!-- /.container-fluid -->
+                        </div><!-- /.container-fluid -->
                 </section> 
                 <!-- Main content -->
-                <section class="content">
 
-
-                    <!-- Default box -->
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Title</h3>
-
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                                    <i class="fas fa-minus"></i></button>
-                                <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-                                    <i class="fas fa-times"></i></button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            Start creating your amazing application!
-                        </div>
-                        <!-- /.card-body -->
-                        <div class="card-footer">
-                            Footer
-                        </div>
-                        <!-- /.card-footer-->
-                    </div>
-                    <!-- /.card -->
-
-                </section>
-                <!-- /.content -->
             </div>
             <!-- /.content-wrapper -->
             <%
@@ -104,13 +132,19 @@
         </div>
         <!-- ./wrapper -->
 
+        <jsp:include page="bottom_links.jsp"/>
+        <!-- page script -->
+        <script src="js/dashboard.js"></script>
+        <!-- Bootstrap 4 -->
+        <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- jQuery -->
         <script src="plugins/jquery/jquery.min.js"></script>
-        <!--Bootstrap 4 -->
+        <!-- Bootstrap 4 -->
         <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- AdminLTE App -->
-        <script src="dist/js/adminlte.min.js"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="dist/js/demo.js"></script>
+        <!-- ChartJS -->
+        <script src="plugins/chart.js/Chart.min.js"></script>
+        <script src="plugins/chart.js/Chart.js"></script>
+
+        <!-- page script -->
     </body>
 </html>

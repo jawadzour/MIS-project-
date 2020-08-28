@@ -162,7 +162,6 @@ public class SeminarGroupController extends HttpServlet {
         Integer studentId = Integer.parseInt(request.getParameter("studentId"));
         SeminarGroupDao seminarGroupDao = new SeminarGroupDaoImpl();
         List<SeminarGroup> seminarGroups = seminarGroupDao.getSeminarGroupsByStudentId(studentId);
-        System.out.println(seminarGroups.get(0).getSeminarGroupId());
         PrintWriter pw = response.getWriter();
         Gson gson = new Gson();
         pw.write(gson.toJson(seminarGroups));

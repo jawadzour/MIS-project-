@@ -7,10 +7,7 @@ package com.muet.daoimpl;
 
 import com.muet.connection.DBConnection;
 import com.muet.dao.FeesDao;
-import com.muet.dao.StudentDao;
 import com.muet.model.Fees;
-import com.muet.model.Student;
-import com.muet.model.StudentFees;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

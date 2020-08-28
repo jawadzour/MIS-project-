@@ -5,7 +5,7 @@
  */
 var studentId;
 function updateData() {
-    var id = studentId; 
+    var id = studentId;
     var fullName = $("#inputFullName").val();
     var rollNumber = $("#inputRollNumber").val();
     var fathersName = $("#inputFatherName").val();
@@ -31,8 +31,8 @@ function updateData() {
     var fieldProgram = $("#inputFieldProgram").val();
     var shift = $("#inputShift").val();
     var timing = $("#inputTiming").val();
-    var departmentId=$("#inputDepartmentId").val();
-    var departmentName=$("#inputDepartment").val();
+    var departmentId = $("#inputDepartmentId").val();
+    var departmentName = $("#inputDepartment").val();
     $.ajax({
         type: "POST",
         url: "StudentController",
@@ -63,13 +63,11 @@ function updateData() {
             fieldProgram: fieldProgram,
             shift: shift,
             timing: timing,
-            departmentId:departmentId,
-            departmentName:departmentName
+            departmentId: departmentId,
+            departmentName: departmentName
         }
         ,
         success: function (data, textStatus, jqXHR) {
-           
-            alert("Data is updated succesfully");
             $("html").animate({scrollTop: $(document).height()}, 1000);
         }
         ,
@@ -79,79 +77,25 @@ function updateData() {
     }
     );
 }
-function getData() {
+
+function getMatriculationInfo() {
     var sId = $("#studentId").val();
     $.ajax({
         url: "StudentController",
         method: "POST",
         async: false,
         data: {
-            action: "getStudentProfileRecord",
-            id : sId
+            action: "getMatriculationInfo",
+            id: sId
         },
         success: function (data) {
             var data = JSON.parse(data);
-            alert(data.studentId);
-            getId(data.studentId);
-                $("#inputDepartmentId").val(data.department.departmentId);
-                $("#inputFullName").val(data.fullName);
-                $("#inputRollNumber").val(data.rollNumber);
-                $("#inputFatherName").val(data.fathersName);
-                $("#inputLegalId").val(data.legalId);
-                $("#inputLegalIdNo").val(data.legalIdNo);
-                $("#inputNationality").val(data.nationality);
-                $("#inputPlaceOfIssueOfLegalId").val(data.placeOfIssueOfLegalId);
-                $("#inputDateOfIssueOfLegalId").val(data.dateOfIssueOfLegalId);
-                $("#inputMobileNumber").val(data.mobile);
-                $("#inputDob").val(data.dob);
-                $("#inputEmail").val(data.email);
-                $("#inputDomicile").val(data.domicile);
-                $("#inputCountryOfBirth").val(data.countryOfBirth);
-                $("#inputBloodGroup").val(data.bloodGroup);
-                $("#inputReligion").val(data.religion);
-                $("#inputAddress").val(data.address);
-                $("#inputCurrentAddress").val(data.currentAddress);
-                $("#inputSemester").val(data.semester);
-                $("#inputDepartment").val(data.department.departmentName);
-                $("#inputBatch").val(data.batch);
-                $("#inputAdmissionDate").val(data.admissionDate);
-                // $("#inputSupervisor").val(data[21].supervisor);
-                $("#inputProgram").val(data.program);
-                $("#inputFieldProgram").val(data.fieldProgram);
-                $("#inputShift").val(data.shift);
-                $("#inputTiming").val(data.timing);
-//            for (var i = 0; i < data.length; i++) {
-//                
-//                getId(data[i].studentId);
-//                $("#inputDepartmentId").val(data[i].department.departmentId);
-//                $("#inputFullName").val(data[i].fullName);
-//                $("#inputRollNumber").val(data[i].rollNumber);
-//                $("#inputFatherName").val(data[i].fathersName);
-//                $("#inputLegalId").val(data[i].legalId);
-//                $("#inputLegalIdNo").val(data[i].legalIdNo);
-//                $("#inputNationality").val(data[i].nationality);
-//                $("#inputPlaceOfIssueOfLegalId").val(data[i].placeOfIssueOfLegalId);
-//                $("#inputDateOfIssueOfLegalId").val(data[i].dateOfIssueOfLegalId);
-//                $("#inputMobileNumber").val(data[i].mobile);
-//                $("#inputDob").val(data[i].dob);
-//                $("#inputEmail").val(data[i].email);
-//                $("#inputDomicile").val(data[i].domicile);
-//                $("#inputCountryOfBirth").val(data[i].countryOfBirth);
-//                $("#inputBloodGroup").val(data[i].bloodGroup);
-//                $("#inputReligion").val(data[i].religion);
-//                $("#inputAddress").val(data[i].address);
-//                $("#inputCurrentAddress").val(data[i].currentAddress);
-//                $("#inputSemester").val(data[i].semester);
-//                $("#inputDepartment").val(data[i].department.departmentName);
-//                $("#inputBatch").val(data[i].batch);
-//                $("#inputAdmissionDate").val(data[i].admissionDate);
-//                // $("#inputSupervisor").val(data[21].supervisor);
-//                $("#inputProgram").val(data[i].program);
-//                $("#inputFieldProgram").val(data[i].fieldProgram);
-//                $("#inputShift").val(data[i].shift);
-//                $("#inputTiming").val(data[i].timing);
-//                
-//            }
+            $("#inputMatriculationPassingYear").val(data.passingYear);
+            $("#inputMatriculationMarks").val(data.marks);
+            $("#inputMatriculationBoard").val(data.board);
+            $("#inputMatriculationSubject").val(data.subject);
+            $("#inputMatriculationMarksheet").attr("src", data.marksheetImage);
+            $("#inputMatriculationCertificate").attr("src", data.certificateImage);
 
 
             $("html").animate({scrollTop: 0}, "slow");
@@ -161,12 +105,117 @@ function getData() {
         }
     });
 }
+function getIntermediateInfo() {
+    var sId = $("#studentId").val();
+    $.ajax({
+        url: "StudentController",
+        method: "POST",
+        async: false,
+        data: {
+            action: "getIntermediateInfo",
+            id: sId
+        },
+        success: function (data) {
+            var data = JSON.parse(data);
+            $("#inputIntermediatePassingYear").val(data.passingYear);
+            $("#inputIntermediateMarks").val(data.marks);
+            $("#inputIntermediateBoard").val(data.board);
+            $("#inputIntermediateSubject").val(data.subject);
+            $("#inputIntermediateMarksheet").attr("src", data.marksheetImage);
+            $("#inputIntermediateCertificate").attr("src", data.certificateImage);
+
+
+            $("html").animate({scrollTop: 0}, "slow");
+        },
+        error: function (data, textStatus, jqXHR) {
+            alert("Error");
+        }
+    });
+}
+function getGraduateInfo() {
+    var sId = $("#studentId").val();
+    $.ajax({
+        url: "StudentController",
+        method: "POST",
+        async: false,
+        data: {
+            action: "getGraduateInfo",
+            id: sId
+        },
+        success: function (data) {
+            var data = JSON.parse(data);
+            $("#inputGraduatePassingYear").val(data.passingYear);
+            $("#inputGraduateCgpa").val(data.cgpa);
+            $("#inputGraduateUniversity").val(data.university);
+            $("#inputGraduateDegreeProgram").val(data.degreeProgram);
+            $("#inputGraduateMarksheet").attr("src", data.marksheetImage);
+            $("#inputGraduateCertificate").attr("src", data.certificateImage);
+
+
+            $("html").animate({scrollTop: 0}, "slow");
+        },
+        error: function (data, textStatus, jqXHR) {
+            alert("Error");
+        }
+    });
+}
+function getData() {
+    var sId = $("#studentId").val();
+    $.ajax({
+        url: "StudentController",
+        method: "POST",
+        async: false,
+        data: {
+            action: "getStudentProfileRecord",
+            id: sId
+        },
+        success: function (data) {
+            var data = JSON.parse(data);
+            $("#inputDepartmentId").val(data.department.departmentName);
+            $("#inputFullName").val(data.fullName);
+            $("#inputRollNumber").val(data.rollNumber);
+            $("#inputFatherName").val(data.fathersName);
+            $("#inputLegalId").val(data.legalId);
+            $("#inputLegalIdNo").val(data.legalIdNo);
+            $("#inputNationality").val(data.nationality);
+            $("#inputPlaceOfIssueOfLegalId").val(data.placeOfIssueOfLegalId);
+            $("#inputDateOfIssueOfLegalId").val(data.dateOfIssueOfLegalId);
+            $("#inputMobileNumber").val(data.mobile);
+            $("#inputDob").val(data.dob);
+            $("#inputEmail").val(data.email);
+            $("#inputDomicile").val(data.domicile);
+            $("#inputCountryOfBirth").val(data.countryOfBirth);
+            $("#inputBloodGroup").val(data.bloodGroup);
+            $("#inputReligion").val(data.religion);
+            $("#inputAddress").val(data.address);
+            $("#inputCurrentAddress").val(data.currentAddress);
+            $("#inputSemester").val(data.semester);
+            $("#inputDepartment").val(data.department.departmentName);
+            $("#inputBatch").val(data.batch);
+            $("#inputAdmissionDate").val(data.admissionDate);
+            $("#inputSupervisor").val(data.supervisor);
+            $("#inputProgram").val(data.program);
+            $("#inputFieldProgram").val(data.fieldProgram);
+            $("#inputShift").val(data.shift);
+            $("#inputTiming").val(data.timing);
+            $("#studentProfileImage").attr("src", data.profileImage);
+
+            $("html").animate({scrollTop: 0}, "slow");
+        },
+        error: function (data, textStatus, jqXHR) {
+            alert("Error");
+        }
+    });
+}
 function getId(id) {
-    studentId=id;  
+    studentId = id;
 }
 $(document).ready(function () {
     getData();
     getId(studentId);
+    getMatriculationInfo();
+    getIntermediateInfo();
+    getGraduateInfo();
     $('#submitBtn1').click(function () {
         updateData();
     });

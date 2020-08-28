@@ -6,6 +6,8 @@
 package com.muet.dao;
 
 import com.muet.model.Student;
+import com.muet.model.StudentAcademicInformationBoard;
+import com.muet.model.StudentAcademicInformationGraduate;
 import java.util.List;
 
 /**
@@ -50,4 +52,11 @@ public interface StudentDao {
      */
 
     public Student getStudentByStudentName(String studentName);
+    
+    public Boolean registerStudent(Student student);
+    public Boolean addMatriculationInfo(StudentAcademicInformationBoard academicInformationBoard);
+    public Boolean addIntermediateInfo(StudentAcademicInformationBoard academicInformationBoard);
+    public Boolean addGraduateInfo(StudentAcademicInformationGraduate academicInformationGraduate);
+    public StudentAcademicInformationBoard getStudentAcademicBoardInfo(Integer studentId, String academicType);
+    public StudentAcademicInformationGraduate getStudentAcademicGraduateInfo(Integer studentId, String graduateType);
 }

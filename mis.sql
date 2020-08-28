@@ -23,16 +23,21 @@ DROP TABLE IF EXISTS `academic_information_board`;
 CREATE TABLE `academic_information_board` (
   `academic_information_board_id` int(11) NOT NULL AUTO_INCREMENT,
   `student_id` int(11) DEFAULT NULL,
-  `passing_year` year(4) DEFAULT NULL,
+  `passing_year` varchar(255) DEFAULT NULL,
   `board` varchar(255) DEFAULT NULL,
-  `marks` decimal(16,4) DEFAULT NULL,
+  `marks` double(16,4) DEFAULT NULL,
   `subject` varchar(255) DEFAULT NULL,
   `academic_type` enum('matriculation','intermediate') DEFAULT NULL,
+  `marksheet_image` varchar(255) DEFAULT NULL,
+  `certificate_image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`academic_information_board_id`),
-  KEY `personal_information_id` (`student_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `personal_information_id` (`student_id`),
+  CONSTRAINT `academic_information_board_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 /*Data for the table `academic_information_board` */
+
+insert  into `academic_information_board`(`academic_information_board_id`,`student_id`,`passing_year`,`board`,`marks`,`subject`,`academic_type`,`marksheet_image`,`certificate_image`) values (14,1,'123','123',90.0000,'123','intermediate','uploads\\academicDocuments\\intermediate\\F16SW49_marksheetImage.png','uploads\\academicDocuments\\intermediate\\F16SW49_certificateImage.png'),(15,1,'123','123',90.0000,'123','matriculation','uploads\\academicDocuments\\matriculation\\F16SW49_marksheetImage.jpg','uploads\\academicDocuments\\matriculation\\F16SW49_certificateImage.jpg');
 
 /*Table structure for table `academic_information_graduate` */
 
@@ -41,16 +46,21 @@ DROP TABLE IF EXISTS `academic_information_graduate`;
 CREATE TABLE `academic_information_graduate` (
   `academic_information_graduate_id` int(11) NOT NULL AUTO_INCREMENT,
   `student_id` int(11) DEFAULT NULL,
-  `passing_year` year(4) DEFAULT NULL,
+  `passing_year` varchar(255) DEFAULT NULL,
   `university` varchar(255) DEFAULT NULL,
-  `marks` decimal(16,4) DEFAULT NULL,
-  `subject` varchar(255) DEFAULT NULL,
+  `cgpa` double(16,4) DEFAULT NULL,
+  `degree_program` varchar(255) DEFAULT NULL,
   `graduate_type` enum('bachelors','masters') DEFAULT NULL,
+  `marksheet_image` varchar(255) DEFAULT NULL,
+  `certificate_image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`academic_information_graduate_id`),
-  KEY `personal_information_id` (`student_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `personal_information_id` (`student_id`),
+  CONSTRAINT `academic_information_graduate_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 /*Data for the table `academic_information_graduate` */
+
+insert  into `academic_information_graduate`(`academic_information_graduate_id`,`student_id`,`passing_year`,`university`,`cgpa`,`degree_program`,`graduate_type`,`marksheet_image`,`certificate_image`) values (8,1,'2020','123',90.0000,'123','masters','uploads\\academicDocuments\\graduate\\F16SW49_marksheetImage.jpg','uploads\\academicDocuments\\graduate\\F16SW49_certificateImage.jpg');
 
 /*Table structure for table `batch` */
 
@@ -79,7 +89,7 @@ CREATE TABLE `department` (
 
 /*Data for the table `department` */
 
-insert  into `department`(`department_id`,`department_name`,`faculty_id`) values (29,'SW',7);
+insert  into `department`(`department_id`,`department_name`,`faculty_id`) values (29,'Software Engineering',7);
 
 /*Table structure for table `department_faculty` */
 
@@ -238,6 +248,7 @@ CREATE TABLE `student` (
   `field_program` varchar(255) DEFAULT NULL,
   `shift` varchar(255) DEFAULT NULL,
   `timing` varchar(255) DEFAULT NULL,
+  `profile_image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`student_id`),
   KEY `nationality` (`nationality`),
   KEY `domicile_id` (`domicile`),
@@ -252,7 +263,7 @@ CREATE TABLE `student` (
 
 /*Data for the table `student` */
 
-insert  into `student`(`student_id`,`roll_number`,`full_name`,`fathers_name`,`legal_id`,`legal_id_no`,`nationality`,`place_of_issue_of_legal_id`,`date_of_issue_of_legal_id`,`mobile`,`dob`,`email`,`domicile`,`country_of_birth`,`blood_group`,`religion`,`address`,`current_address`,`semester`,`department_id`,`batch`,`admission_date`,`supervisor_id`,`program`,`field_program`,`shift`,`timing`) values (1,'f15','Raheem',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,29,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,'76','Jawad Nabi','Ghulam Nabi','22','3','Pakistani','Sujawal',NULL,'09800','1994-07-12','kfkaek@gmail.com','Sujawal','Pakistan','O+ve','Islam','lasdkfklad','askdnfka',8,29,'F16','2016-11-19',NULL,'BE','SW','morning','8 to 3');
+insert  into `student`(`student_id`,`roll_number`,`full_name`,`fathers_name`,`legal_id`,`legal_id_no`,`nationality`,`place_of_issue_of_legal_id`,`date_of_issue_of_legal_id`,`mobile`,`dob`,`email`,`domicile`,`country_of_birth`,`blood_group`,`religion`,`address`,`current_address`,`semester`,`department_id`,`batch`,`admission_date`,`supervisor_id`,`program`,`field_program`,`shift`,`timing`,`profile_image`) values (1,'F16SW49','Nand Lal Khatri','Lal Chand','123','123','123','123','2020-08-27','123123123','2020-08-27','nand@gmail.com','123','Pakistan','123','123','Sonara Mohalla','123',1,29,'19','2020-08-27',NULL,'aasdf','asdf','asdf','123','uploads\\profileImages\\F16SW49_profileImage.jpg'),(4,'F16SW491`','Jawad Nabi','Ghulam Nabi','CNIC','123123123123','Pakistan','Sujawal','1990-01-01','0123123123','1990-01-01','jawadzour@gmail.com','Sujawal','Pakistan','O+','Islam','asdf adf','asdfa asdf',2,29,'19','2020-01-01',NULL,'Masters','Software Engineering','asdf','asdf',NULL);
 
 /*Table structure for table `student_fees` */
 

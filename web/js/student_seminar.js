@@ -6,7 +6,6 @@
 
 function showStudentSeminarRecords() {
     var studentId = $("#studentSessionId").val();
-    alert(studentId);
     $.ajax({
         url: "SeminarGroupController",
         method: "POST",
@@ -17,7 +16,6 @@ function showStudentSeminarRecords() {
         },
         success: function (data) {
             var data = JSON.parse(data);
-            alert(data[0].studentFeesId);
             var html = "";
             for (var i = 0; i < data.length; i++) {
                 html += "<tr><td >" + data[i].seminar.seminarTitle + "</td>";

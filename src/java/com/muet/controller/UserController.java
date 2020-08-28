@@ -6,6 +6,7 @@
 package com.muet.controller;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.muet.dao.UserDao;
 import com.muet.daoimpl.UserDaoImpl;
 import com.muet.model.User;
@@ -60,6 +61,9 @@ public class UserController extends HttpServlet {
                     break;
                 case "login":
                     login(request, response);
+                    break;
+                case "changePassword":
+                    changePassword(request, response);
                 default:
                     break;
             }
@@ -72,13 +76,18 @@ public class UserController extends HttpServlet {
         String password = request.getParameter("password");
         UserDao userDao = new UserDaoImpl();
         User user = userDao.login(email, password);
-        System.out.println("------------>" + user.getFullName());
         if (user.getFullName() == null) {
             request.getSession().setAttribute("failed", 1);
             response.sendRedirect("login.jsp");
         } else if(user.getRole().equals("student")) {
             request.getSession().setAttribute("student", user.getStudent());
-            response.sendRedirect("student_dashboard.jsp");
+            if(user.getStudent().getRegistrationStatus().equals("unregistered")) {
+                
+                response.sendRedirect("student_registration.jsp");
+            }
+            else {
+                response.sendRedirect("student_dashboard.jsp");
+            }
         }
         else if(user.getRole().equals("admin") || user.getRole().equals("user")) {
             request.getSession().setAttribute("user", user);
@@ -167,4 +176,14 @@ public class UserController extends HttpServlet {
         userDao.deleteUser(id);
     }
 
+    private void changePassword(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String newPassword = request.getParameter("password");
+        Integer studentId = Integer.parseInt(request.getParameter("studentId"));
+        UserDao userDao = new UserDaoImpl();
+        Boolean update = userDao.changePassword(newPassword, studentId);
+        if(update) {
+            response.sendRedirect("student_dashboard.jsp");
+        }
+    }
+    
 }

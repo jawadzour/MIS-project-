@@ -57,10 +57,24 @@ public class UserDaoImpl implements UserDao {
         } catch (SQLException ex) {
             Logger.getLogger(UserDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         return user;
     }
-
+    
+    @Override
+    public Boolean addStudent(Student student) {
+        try {
+            pst = con.prepareStatement("insert into users (full_name, email, password, role, student_id) values (?,?,?,?,?);");
+            pst.setString(1, student.getFullName());
+            pst.setString(2, student.getEmail());
+            pst.setString(3, student.getPassword());
+            pst.setString(4, "student");
+            pst.setInt(5, student.getStudentId());
+            return pst.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
     @Override
     public Boolean addUser(User user) {
         try {
@@ -107,7 +121,7 @@ public class UserDaoImpl implements UserDao {
     public User getUserById(Integer id) {
         User user = new User();
         try {
-            pst = con.prepareStatement("select * from users where user_id = ?");
+            pst = con.prepareStatement("select * from users where user_id = ? and role = 'user'");
             pst.setInt(1, id);
             rst = pst.executeQuery();
             while (rst.next()) {
@@ -126,7 +140,7 @@ public class UserDaoImpl implements UserDao {
     public List<User> getUsers() {
         List<User> users = new ArrayList<>();
         try {
-            pst = con.prepareStatement("select * from users;");
+            pst = con.prepareStatement("select * from users where role = 'user';");
             rst = pst.executeQuery();
             while (rst.next()) {
                 User user = new User();
@@ -140,6 +154,33 @@ public class UserDaoImpl implements UserDao {
             Logger.getLogger(UserDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return users;
+    }
+
+    @Override
+    public Boolean updateStudent(Student student) {
+        try {
+            pst = con.prepareStatement("update users set full_name = ?, email = ? where student_id = ?;");
+            pst.setString(1, student.getFullName());
+            pst.setString(2, student.getEmail());
+            pst.setInt(3, student.getStudentId());
+            return pst.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    @Override
+    public Boolean changePassword(String password, Integer studentId) {
+        try {
+            pst = con.prepareStatement("update users set password = ? where student_id = ?;");
+            pst.setString(1, password);
+            pst.setInt(2, studentId);
+            return pst.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 
 }

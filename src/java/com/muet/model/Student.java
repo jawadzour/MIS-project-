@@ -5,9 +5,6 @@
  */
 package com.muet.model;
 
-import java.sql.Timestamp;
-import java.util.Date;
-
 /**
  *
  * @author 92310
@@ -35,12 +32,14 @@ public class Student{
     private Department department;
     private String batch;
     private String  admissionDate;
-    private int supervisorId;
+    private String supervisor;
     private String program;
     private String fieldProgram;
     private String shift;
     private String timing;
-
+    private String profileImage;
+    private String password;
+    private String registrationStatus;
     
     public String getFathersName() {
         return fathersName;
@@ -194,12 +193,12 @@ public class Student{
         this.admissionDate = admissionDate;
     }
 
-    public int getSupervisorId() {
-        return supervisorId;
+    public String getSupervisor() {
+        return supervisor;
     }
 
-    public void setSupervisorId(int supervisorId) {
-        this.supervisorId = supervisorId;
+    public void setSupervisor(String supervisor) {
+        this.supervisor = supervisor;
     }
 
     public String getProgram() {
@@ -257,6 +256,30 @@ public class Student{
 
     public void setRollNumber(String rollNumber) {
         this.rollNumber = rollNumber;
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRegistrationStatus() {
+        return registrationStatus;
+    }
+
+    public void setRegistrationStatus(String registrationStatus) {
+        this.registrationStatus = registrationStatus;
     }
     
 }

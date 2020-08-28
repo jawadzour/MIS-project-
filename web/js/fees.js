@@ -23,7 +23,6 @@ function saveFees() {
         success: function (data, textStatus, jqXHR) {
             showData();
             $("html").animate({scrollTop: $(document).height()}, 1000);
-            alert("Data Added Successfully!");
         },
         error: function (data, textStatus, jqXHR) {
             alert("Error");
@@ -103,7 +102,6 @@ function updateData() {
         success: function (data, textStatus, jqXHR) {
             showData();
             $("html").animate({scrollTop: $(document).height()}, 1000);
-            alert("Data Updated Successfully!");
         },
         error: function (data, textStatus, jqXHR) {
             alert("Error");
@@ -123,7 +121,6 @@ function deleteData(id) {
             showData();
             location.reload();
             $("html").animate({scrollTop: $(document).height()}, 1000);
-            alert("Data Deleted Successfully!");
         },
         error: function (data, textStatus, jqXHR) {
             alert("Error");

@@ -52,67 +52,61 @@
                 </li>
 
                 <li class="nav-item">
-                    <!--<a href="faculty.jsp?username=${sessionScope.user.fullName}" class="nav-link">-->
-
                     <a href="faculty.jsp" class="nav-link">                        
-                            <i class="nav-icon fas fa-money-bill text-info"></i>
+                            <i class="nav-icon fas fa-user-friends"></i>
                             <p>Faculty</p>
 
                         </a>
                 </li>
 
                 <li class="nav-item">
-                    <!--<a href="department.jsp?username=${sessionScope.user.fullName}" class="nav-link">-->
                      <a href="department.jsp" class="nav-link">
-                        <i class="nav-icon fas fa-car text-info"></i>
+                        <i class="nav-icon fas fa-university"></i>
                         <p>Department</p>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <!--<a href="batch.jsp?username=${sessionScope.user.fullName}" class="nav-link">-->
                     <a href="batch.jsp" class="nav-link">
-                        <i class="nav-icon fas fa-map-marker text-info"></i>
+                        <i class="nav-icon fas fa-users"></i>
                         <p>Batch</p>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a href="student.jsp" class="nav-link">
-                        <i class="nav-icon fas fa-road text-info"></i>
+                        <i class="nav-icon fas fa-user-graduate"></i>
                         <p>Students</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <!--<a href="fees.jsp?username=${sessionScope.user.fullName}" class="nav-link">-->
                     <a href="fees.jsp" class="nav-link">
-                        <i class="nav-icon fas fa-bus text-info"></i>
+                        <i class="nav-icon fas fa-money-bill-alt"></i>
                         <p>Fees</p>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <!--<a href="fees_details.jsp?username=${sessionScope.user.fullName}" class="nav-link">-->
                     <a href="fees_details.jsp" class="nav-link">
-                        <i class="nav-icon fas fa-money-bill-alt text-info"></i>
+                        <i class="nav-icon fas fa-money-bill-alt"></i>
                         <p>Fees Details</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="thesis.jsp" class="nav-link">
-                        <i class="nav-icon fas fa-users text-info"></i>
+                        <i class="nav-icon fas fa-book"></i>
                         <p>Thesis</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="seminar.jsp" class="nav-link">
-                        <i class="nav-icon fas fa-users text-info"></i>
+                        <i class="nav-icon fas fa-file-powerpoint"></i>
                         <p>Seminar</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="user.jsp" class="nav-link">
-                        <i class="nav-icon fas fa-users text-info"></i>
+                        <i class="nav-icon fas fa-users"></i>
                         <p>Users</p>
                     </a>
                 </li>
@@ -123,5 +117,3 @@
     </div>
     <!-- /.sidebar -->
 </aside>
-
-<%--<c:redirect url="index.jsp?username=${sessionScope.user.fullName}"/>--%>

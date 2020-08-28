@@ -39,6 +39,7 @@ public class BatchDaoImpl implements BatchDao {
         } catch (SQLException ex) {
             Logger.getLogger(BatchDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
         return false;
     }
 
@@ -52,6 +53,7 @@ public class BatchDaoImpl implements BatchDao {
         } catch (SQLException ex) {
             Logger.getLogger(BatchDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         return false;
     }
 
@@ -64,6 +66,7 @@ public class BatchDaoImpl implements BatchDao {
         } catch (SQLException ex) {
             Logger.getLogger(BatchDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         return false;
     }
 
@@ -99,6 +102,7 @@ public class BatchDaoImpl implements BatchDao {
         } catch (SQLException ex) {
             Logger.getLogger(BatchDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         return batches;
     }
 
@@ -116,6 +120,7 @@ public class BatchDaoImpl implements BatchDao {
         } catch (SQLException ex) {
             Logger.getLogger(BatchDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         return batch;
     }
     
