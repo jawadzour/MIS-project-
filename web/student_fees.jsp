@@ -97,8 +97,6 @@
                                                 <th>Amount Paid</th>
                                                 <th>Late Fees</th>
                                                 <th>Challan No</th>
-                                                <th>Challan Image</th>
-                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody id="tab">
@@ -114,8 +112,6 @@
                                                 <th>Amount Paid</th>
                                                 <th>Late Fees</th>
                                                 <th>Challan No</th>
-                                                <th>Challan Image</th>
-                                                <th>Action</th>
                                             </tr>
                                         </tfoot>
                                     </table>

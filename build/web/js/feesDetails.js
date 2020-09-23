@@ -5,8 +5,8 @@
  */
 var studentFeesId;
 function saveStudentFees() {
-    var studentId = $("#inputStudentId").val();
-    var feesId = $("#inputFeesId").val();
+    var studentRollNumber = $("#inputStudentRollNumber").val();
+    var feesId = $("#inputFees").val();
     var datePaid = $("#inputDatePaid").val();
     var amountPaid = $("#inputAmountPaid").val();
     var lateFee = $("#inputLateFee").val();
@@ -16,7 +16,7 @@ function saveStudentFees() {
         url: "FeesDetailsController",
         data: {
             action: "add",
-            studentId: studentId,
+            studentRollNumber: studentRollNumber,
             feesId: feesId,
             datePaid: datePaid,
             amountPaid: amountPaid,
@@ -49,8 +49,8 @@ function showData() {
             var data = JSON.parse(data);
             var html = "";
             for (var i = 0; i < data.length; i++) {
-                html += "<tr><td >" + data[i].student.studentId + "</td>";
-                html += "<td >" + data[i].fees.feesId + "</td>";
+                html += "<tr><td >" + data[i].student.rollNumber + "</td>";
+                html += "<td >" + data[i].fees.feesTitle + "</td>";
                 html += "<td >" + data[i].datePaid + "</td>";
                 html += "<td >" + data[i].amountPaid + "</td>";
                 html += "<td >" + data[i].lateFees + "</td>";
@@ -77,8 +77,8 @@ function getData(id) {
         },
         success: function (data) {
             var data = JSON.parse(data);
-            $("#inputStudentId").val(data.student.studentId);
-            $("#inputFeesId").val(data.fees.feesId);
+            $("#inputStudentRollNumber").val(data.student.rollNumber);
+            $("#inputFees").val(data.fees.feesId);
             $("#inputDatePaid").val(data.datePaid);
             $("#inputAmountPaid").val(data.amountPaid);
             $("#inputLateFee").val(data.lateFees);
@@ -92,8 +92,8 @@ function getData(id) {
     });
 }
 function updateData() {
-    var studentId = $("#inputStudentId").val();
-    var feesId = $("#inputFeesId").val();
+    var studentRollNumber = $("#inputStudentRollNumber").val();
+    var feesId = $("#inputFees").val();
     var datePaid = $("#inputDatePaid").val();
     var amountPaid = $("#inputAmountPaid").val();
     var lateFee = $("#inputLateFee").val();
@@ -104,7 +104,7 @@ function updateData() {
         url: "FeesDetailsController",
         data: {
             action: "update",
-            studentId: studentId,
+            studentRollNumber: studentRollNumber,
             feesId: feesId,
             datePaid: datePaid,
             amountPaid: amountPaid,
@@ -144,6 +144,26 @@ function deleteData(id) {
         }
     });
 }
+function populateFeesTitles() {
+    $.ajax({
+        type: "POST",
+        url: "FeesController",
+        data: {
+            action: "view"
+        },
+        success: function (data, textStatus, jqXHR) {
+            var data = JSON.parse(data);
+            var html = "<option value='' selected disabled>Select Fees Title</option>";
+            for (var i = 0; i < data.length; i++) {
+                html += "<option value='" + data[i].feesId + "'>" + data[i].feesTitle + "</option>";
+            }
+            $("#inputFees").html(html);
+        },
+        error: function (data, textStatus, jqXHR) {
+            alert("Error");
+        }
+    });
+}
 
 function resetFields() {
     $("#inputStudentId").val('');
@@ -156,6 +176,7 @@ function resetFields() {
 }
 $(document).ready(function () {
     showData();
+    populateFeesTitles();
     $(function () {
         $("#example1").DataTable({
             "responsive": true,
@@ -186,10 +207,10 @@ $(document).ready(function () {
         },
         messages: {
             studentId: {
-                required: "Please Enter Student ID"
+                required: "Please Enter Student Roll Number"
             },
             feesId: {
-                required: "Please Enter Fees ID"
+                required: "Please Select Fees"
             },
             datePaid: {
                 required: "Please Select Date Paid"

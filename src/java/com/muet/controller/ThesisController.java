@@ -6,7 +6,9 @@
 package com.muet.controller;
 
 import com.google.gson.Gson;
+import com.muet.dao.StudentDao;
 import com.muet.dao.ThesisDao;
+import com.muet.daoimpl.StudentDaoImpl;
 import com.muet.daoimpl.ThesisDaoImpl;
 import com.muet.model.Student;
 import com.muet.model.Thesis;
@@ -115,8 +117,8 @@ public class ThesisController extends HttpServlet {
         Thesis thesis = new Thesis();
         thesis.setThesisTitle(request.getParameter("thesisTitle"));
         thesis.setThesisExamDate(request.getParameter("thesisExamDate"));
-        Student student = new Student();
-        student.setStudentId(Integer.parseInt(request.getParameter("studentId")));
+        StudentDao studentDao = new StudentDaoImpl();
+        Student student = studentDao.getStudentByRollNo(request.getParameter("studentRollNumber"));
         thesis.setStudent(student);
         thesis.setFinalResults(Integer.parseInt(request.getParameter("finalResults")));
         thesis.setRemarks(request.getParameter("remarks"));

@@ -90,8 +90,8 @@ public class StudentFeesDaoImpl implements StudentFeesDao{
             rst = pst.executeQuery();
             while(rst.next()) {
                 studentFees.setStudentFeesId(rst.getInt("student_fees_id"));
-                Student student = new Student();
-                student.setStudentId(rst.getInt("student_id"));
+                StudentDao studentDao = new StudentDaoImpl();
+                Student student = studentDao.getStudentById(rst.getInt("student_id"));
                 studentFees.setStudent(student);
                 FeesDao feesDao = new FeesDaoImpl();
                 Fees fees = feesDao.getFeesById(rst.getInt("fees_id"));
@@ -116,8 +116,8 @@ public class StudentFeesDaoImpl implements StudentFeesDao{
             while(rst.next()) {
                 StudentFees studentFees = new StudentFees();
                 studentFees.setStudentFeesId(rst.getInt("student_fees_id"));
-                Student student = new Student();
-                student.setStudentId(rst.getInt("student_id"));
+                StudentDao studentDao = new StudentDaoImpl();
+                Student student = studentDao.getStudentById(rst.getInt("student_id"));
                 studentFees.setStudent(student);
                 FeesDao feesDao = new FeesDaoImpl();
                 Fees fees = feesDao.getFeesById(rst.getInt("fees_id"));

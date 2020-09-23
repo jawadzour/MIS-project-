@@ -24,10 +24,10 @@ function showStudentSeminarRecords() {
                 html += "<td >" + data[i].dateConducted + "</td>";
                 html += "<td >" + data[i].remarks + "</td>";
                 html += "<td >" + data[i].comments + "</td>";
-                html += "<td class='text-center py-0 align-middle'><div class='btn-group btn-group-sm'>";
-                html += "<a type='button' class='btn btn-info' onclick='getData(" + data[i].feesId + ");'><i class='fas fa-pencil-alt'></i></a>";
-                html += "<a type='button' class='btn btn-danger' onclick='deleteData(" + data[i].feesId + ");'><i class='fas fa-trash'></i></a>";
-                html += "</div></td>";
+                //html += "<td class='text-center py-0 align-middle'><div class='btn-group btn-group-sm'>";
+                //html += "<a type='button' class='btn btn-info' onclick='getData(" + data[i].feesId + ");'><i class='fas fa-pencil-alt'></i></a>";
+                //html += "<a type='button' class='btn btn-danger' onclick='deleteData(" + data[i].feesId + ");'><i class='fas fa-trash'></i></a>";
+                //html += "</div></td>";
                 html += "</tr>";
             }
             $("#tab").html(html);

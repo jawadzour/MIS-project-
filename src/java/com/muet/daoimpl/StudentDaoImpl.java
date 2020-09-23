@@ -160,7 +160,7 @@ public class StudentDaoImpl implements StudentDao {
                 student.setProfileImage(rst.getString("profile_image"));
                 student.setRegistrationStatus(rst.getString("registration_status"));
                 student.setSupervisor(rst.getString("supervisor"));
-                
+
 //                std.add(student);  
             }
         } catch (SQLException ex) {
@@ -353,6 +353,58 @@ public class StudentDaoImpl implements StudentDao {
             Logger.getLogger(StudentDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return academicInformationGraduate;
+    }
+
+    @Override
+    public Student getStudentByRollNo(String rollNo) {
+        con = DBConnection.getConnection();
+//         List<Student> std = new ArrayList<>();
+
+        Student student = new Student();
+
+        try {
+            pst = con.prepareStatement("select * from student where roll_number =?");
+            pst.setString(1, rollNo);
+            rst = pst.executeQuery();
+            while (rst.next()) {
+                student.setStudentId(rst.getInt("student_id"));
+                student.setFullName(rst.getString("full_name"));
+                student.setRollNumber(rst.getString("roll_number"));
+                student.setFathersName(rst.getString("fathers_name"));
+                student.setLegalId(rst.getString("legal_id"));
+                student.setLegalIdNo(rst.getString("legal_id_no"));
+                student.setNationality(rst.getString("nationality"));
+                student.setPlaceOfIssueOfLegalId(rst.getString("place_of_issue_of_legal_id"));
+                student.setDateOfIssueOfLegalId(rst.getString("date_of_issue_of_legal_id"));
+                student.setMobile(rst.getString("mobile"));
+                student.setDob(rst.getString("dob"));
+                student.setEmail(rst.getString("email"));
+                student.setDomicile(rst.getString("domicile"));
+                student.setCountryOfBirth(rst.getString("country_of_birth"));
+                student.setBloodGroup(rst.getString("blood_group"));
+                student.setReligion(rst.getString("religion"));
+                student.setAddress(rst.getString("address"));
+                student.setCurrentAddress(rst.getString("current_address"));
+                student.setSemester(rst.getInt("semester"));
+                DepartmentDao departmentDao = new DepartmentDaoImpl();
+                Department department = departmentDao.getDepartmentById(rst.getInt("department_id"));
+                student.setDepartment(department);
+                //  student.setDepartmentId(rst.getInt("department_id"));
+                student.setBatch(rst.getString("batch"));
+                student.setAdmissionDate(rst.getString("admission_date"));
+                // student.setSupervisorId(rst.getInt("supervisor_id"));
+                student.setProgram(rst.getString("program"));
+                student.setFieldProgram(rst.getString("field_program"));
+                student.setShift(rst.getString("shift"));
+                student.setTiming(rst.getString("timing"));
+                student.setProfileImage(rst.getString("profile_image"));
+                student.setRegistrationStatus(rst.getString("registration_status"));
+                student.setSupervisor(rst.getString("supervisor"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return student;
     }
 
 }

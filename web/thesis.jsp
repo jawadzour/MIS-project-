@@ -74,8 +74,8 @@
                                             <input type="text" name="thesisTitle" class="form-control" id="inputThesisTitle">
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputStudentId">Student ID</label>
-                                            <input type="number" name="studentId" class="form-control" id="inputStudentId">
+                                            <label for="inputStudentRollNumber">Student Roll Number</label>
+                                            <input type="text" name="studentRollNumber" class="form-control" id="inputStudentRollNumber">
                                         </div>
                                         <div class="form-group">
                                             <label for="inputThesisExamDate">Thesis Exam Date</label>

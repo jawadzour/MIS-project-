@@ -20,7 +20,6 @@ function saveDepartment() {
                 resetFields();
                 showData();
                 $("html").animate({scrollTop: $(document).height()}, 1000);
-                alert("Data Added Successfully!");
             },
             error: function (data, textStatus, jqXHR) {
                 alert("Error");
@@ -95,7 +94,6 @@ function updateData() {
             resetFields();
             showData();
             $("html").animate({scrollTop: $(document).height()}, 1000);
-            alert("Data Updated Successfully!");
         },
         error: function (data, textStatus, jqXHR) {
             alert("Error");
@@ -193,7 +191,6 @@ $("#submitBtn").on("click", function() {
             saveDepartment();
         }
         else if($("#submitBtn").val() === "Update Department"){
-            alert("updateCalled");
             updateData();
         }
     }

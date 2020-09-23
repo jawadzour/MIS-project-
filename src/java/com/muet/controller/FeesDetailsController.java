@@ -6,14 +6,15 @@
 package com.muet.controller;
 
 import com.google.gson.Gson;
+import com.muet.dao.StudentDao;
 import com.muet.dao.StudentFeesDao;
+import com.muet.daoimpl.StudentDaoImpl;
 import com.muet.daoimpl.StudentFeesDaoImpl;
 import com.muet.model.Fees;
 import com.muet.model.Student;
 import com.muet.model.StudentFees;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -113,8 +114,8 @@ public class FeesDetailsController extends HttpServlet {
 
     private void addData(HttpServletRequest request, HttpServletResponse response) {
         StudentFees studentFees = new StudentFees();
-        Student student = new Student();
-        student.setStudentId(Integer.parseInt(request.getParameter("studentId")));
+        StudentDao studentDao = new StudentDaoImpl();
+        Student student = studentDao.getStudentByRollNo(request.getParameter("studentRollNumber"));
         studentFees.setStudent(student);
         Fees fees = new Fees();
         fees.setFeesId(Integer.parseInt(request.getParameter("feesId")));
@@ -130,8 +131,6 @@ public class FeesDetailsController extends HttpServlet {
     private void getStudentFeesRecord(HttpServletRequest request, HttpServletResponse response) throws IOException {
         StudentFeesDao studentFeesDao = new StudentFeesDaoImpl();
         StudentFees studentFees = studentFeesDao.getStudentFeesById(Integer.parseInt(request.getParameter("studentFeesId")));
-        System.out.println("---------------------> " + request.getParameter("studentFeesId"));
-        System.out.println("---------------------> " + studentFees.getStudent().getStudentId());
         Gson gson = new Gson();
         PrintWriter pw = response.getWriter();
         pw.write(gson.toJson(studentFees));
@@ -140,8 +139,8 @@ public class FeesDetailsController extends HttpServlet {
     private void updateData(HttpServletRequest request, HttpServletResponse response) {
         StudentFees studentFees = new StudentFees();
         studentFees.setStudentFeesId(Integer.parseInt(request.getParameter("studentFeesId")));
-        Student student = new Student();
-        student.setStudentId(Integer.parseInt(request.getParameter("studentId")));
+        StudentDao studentDao = new StudentDaoImpl();
+        Student student = studentDao.getStudentByRollNo(request.getParameter("studentRollNumber"));
         studentFees.setStudent(student);
         Fees fees = new Fees();
         fees.setFeesId(Integer.parseInt(request.getParameter("feesId")));

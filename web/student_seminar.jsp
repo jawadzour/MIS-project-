@@ -96,7 +96,6 @@
                                                 <th>Date Conducted</th>
                                                 <th>Remarks</th>
                                                 <th>Comments</th>
-                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody id="tab">
@@ -110,7 +109,6 @@
                                                 <th>Date Conducted</th>
                                                 <th>Remarks</th>
                                                 <th>Comments</th>
-                                                <th>Action</th>
                                             </tr>
                                         </tfoot>
                                     </table>

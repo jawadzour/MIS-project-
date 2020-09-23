@@ -70,12 +70,15 @@
                                 <form id="studentFeesForm" method="POST">
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="inputStudentId">Student ID</label>
-                                            <input name="studentId" type="text" id="inputStudentId" class="form-control">
+                                            <label for="inputStudentRollNumber">Student Roll Number</label>
+                                            <input name="studentId" type="text" id="inputStudentRollNumber" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputFeesId">Fees ID</label>
-                                            <input name="feesId" type="number" id="inputFeesId" class="form-control">
+                                            <label for="inputFees">Fees Title</label>
+<!--                                            <input name="feesTitle" type="number" id="inputFeesTitle" class="form-control">-->
+                                            <select name="feesId" class="form-control custom-select" id="inputFees">
+
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="inputDatePaid">Date Paid</label>
@@ -113,8 +116,8 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Student ID</th>
-                                                <th>Fees ID</th>
+                                                <th>Student Roll Number</th>
+                                                <th>Fees Title</th>
                                                 <th>Date Paidt</th>
                                                 <th>Amount Paid</th>
                                                 <th>Late Fee</th>
@@ -127,8 +130,8 @@
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>Student ID</th>
-                                                <th>Fees ID</th>
+                                                <th>Student Roll Number</th>
+                                                <th>Fees Title</th>
                                                 <th>Date Paidt</th>
                                                 <th>Amount Paid</th>
                                                 <th>Late Fee</th>

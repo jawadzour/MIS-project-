@@ -3,7 +3,7 @@
 var thesisId;
 function saveThesis() {
     var thesisTitle = $("#inputThesisTitle").val();
-    var studentId = $("#inputStudentId").val();
+    var studentRollNumber = $("#inputStudentRollNumber").val();
     var thesisExamDate = $("#inputThesisExamDate").val();
     var finalResults = $("#inputFinalResults").val();
     var remarks = $("#inputRemarks").val();
@@ -13,7 +13,7 @@ function saveThesis() {
         data: {
             action: "add",
             thesisTitle: thesisTitle,
-            studentId: studentId,
+            studentRollNumber: studentRollNumber,
             thesisExamDate: thesisExamDate,
             finalResults: finalResults,
             remarks: remarks
@@ -41,7 +41,7 @@ function showData() {
             var html = "";
             for (var i = 0; i < data.length; i++) {
                 html += "<tr><td >" + data[i].thesisTitle + "</td>";
-                html += "<td >" + data[i].student.studentId + "</td>";
+                html += "<td >" + data[i].student.rollNumber + "</td>";
                 html += "<td >" + data[i].thesisExamDate + "</td>";
                 html += "<td >" + data[i].finalResults + "</td>";
                 html += "<td >" + data[i].remarks + "</td>";
@@ -68,7 +68,7 @@ function getData(id) {
         success: function (data) {
             var data = JSON.parse(data);
             $("#inputThesisTitle").val(data.thesisTitle);
-            $("#inputStudentId").val(data.student.studentId);
+            $("#inputStudentRollNumber").val(data.student.rollNumber);
             $("#inputThesisExamDate").val(data.thesisExamDate);
             $("#inputFinalResults").val(data.finalResults);
             $("#inputRemarks").val(data.remarks);

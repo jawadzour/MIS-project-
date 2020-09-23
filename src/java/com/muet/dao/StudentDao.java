@@ -59,4 +59,5 @@ public interface StudentDao {
     public Boolean addGraduateInfo(StudentAcademicInformationGraduate academicInformationGraduate);
     public StudentAcademicInformationBoard getStudentAcademicBoardInfo(Integer studentId, String academicType);
     public StudentAcademicInformationGraduate getStudentAcademicGraduateInfo(Integer studentId, String graduateType);
+    public Student getStudentByRollNo(String rollNo);
 }
